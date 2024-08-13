@@ -11,6 +11,6 @@ namespace MovieWebsite.Models
         Task AddCategoryAsync(Category category);
         Task UpdateCategoryAsync(Category category);
         Task DeleteCategoryAsync(long? id);
-        Task<IEnumerable<Category>> GetCategoriesByLetterAsync(string letter);
+        // Task<IEnumerable<Category>> GetCategoriesByLetterAsync(string letter);
     }
 }

@@ -49,11 +49,11 @@ namespace MovieWebsite.Models
                 await _context.SaveChangesAsync();
             }
         }
-        public async Task<IEnumerable<Category>> GetCategoriesByLetterAsync(string letter)
-        {
-            return await _context.Categories
-                .Where(c => c.Name.StartsWith(letter, StringComparison.OrdinalIgnoreCase))
-                .ToListAsync();
-        }
+        // public async Task<IEnumerable<Category>> GetCategoriesByLetterAsync(string letter)
+        // {
+        //     return await _context.Categories
+        //         .Where(c => c.Name.StartsWith(letter, StringComparison.OrdinalIgnoreCase))
+        //         .ToListAsync();
+        // }
     }
 }
