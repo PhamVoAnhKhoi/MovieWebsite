@@ -1,0 +1,65 @@
+@page "/watchmovie/{Id:long}"
+@using MovieWebsite.Models
+@inject IMovieReference MovieReference
+@inject NavigationManager NavigationManager
+
+<h3>Xem Phim</h3>
+
+@if (movie == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="container">
+        <h5 class="card-title">@movie.Title</h5>
+
+        @if (movie.MovieUrl.Contains("youtube.com") || movie.MovieUrl.Contains("youtu.be"))
+        {
+            <!-- Nhúng video từ YouTube -->
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" width="100%" height="500px"
+                        src="@ConvertToYoutubeEmbedUrl(movie.MovieUrl)" 
+                        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        }
+        else
+        {
+            <!-- Phát video từ file mp4 -->
+            <video width="100%" controls>
+                <source src="@movie.MovieUrl" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ thẻ video.
+            </video>
+        }
+    </div>
+}
+
+@code {
+    [Parameter]
+    public long? Id { get; set; }
+
+    private Movie movie;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id.HasValue)
+        {
+            movie = await MovieReference.GetMovieByIdAsync(Id.Value);
+        }
+    }
+
+    private string ConvertToYoutubeEmbedUrl(string url)
+    {
+        if (url.Contains("watch?v="))
+        {
+            return url.Replace("watch?v=", "embed/");
+        }
+        else if (url.Contains("youtu.be"))
+        {
+            return url.Replace("youtu.be", "www.youtube.com/embed");
+        }
+        return url;
+    }
+}

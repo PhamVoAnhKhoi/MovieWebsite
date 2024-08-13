@@ -1,0 +1,16 @@
+// Models/ICategoryReference.cs
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace MovieWebsite.Models
+{
+    public interface ICategoryReference
+    {
+        Task<IEnumerable<Category>> GetAllCategoriesAsync();
+        Task<Category> GetCategoryByIdAsync(long? id);
+        Task AddCategoryAsync(Category category);
+        Task UpdateCategoryAsync(Category category);
+        Task DeleteCategoryAsync(long? id);
+        Task<IEnumerable<Category>> GetCategoriesByLetterAsync(string letter);
+    }
+}

@@ -1,0 +1,66 @@
+@page "/admin/category"
+@using MovieWebsite.Models
+@inject ICategoryReference CategoryReference
+
+<h3>Quản lý Thể Loại Phim</h3>
+
+@if (categories == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="container">
+        <form @onsubmit="HandleAddCategory">
+            <div class="input-group mb-3">
+                <input type="text" @bind="newCategoryName" class="form-control" placeholder="Thêm thể loại mới">
+                <button class="btn btn-primary" type="submit">Thêm</button>
+            </div>
+        </form>
+
+        <ul class="list-group">
+            @foreach (var category in categories)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    @category.Name
+                    <button class="btn btn-danger btn-sm" @onclick="() => HandleDeleteCategory(category.CategoryId)">Xóa</button>
+                    <a class="btn btn-primary" href="/admin/editcategory/@category.CategoryId">Edit</a>
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+@code {
+    private IEnumerable<Category> categories;
+    private string newCategoryName;
+
+    protected override async Task OnInitializedAsync()
+    {
+        categories = await CategoryReference.GetAllCategoriesAsync();
+    }
+
+    private async Task HandleAddCategory()
+    {
+        if (!string.IsNullOrWhiteSpace(newCategoryName))
+        {
+            var newCategory = new Category { Name = newCategoryName };
+            await CategoryReference.AddCategoryAsync(newCategory);
+            categories = await CategoryReference.GetAllCategoriesAsync(); // Refresh the list
+            newCategoryName = string.Empty; // Clear input
+        }
+    }
+    private async Task HandleUpdateCategory()
+    {
+
+    }
+
+    private async Task HandleDeleteCategory(long? id)
+    {
+        if (id.HasValue)
+        {
+            await CategoryReference.DeleteCategoryAsync(id.Value);
+            categories = await CategoryReference.GetAllCategoriesAsync(); // Refresh the list
+        }
+    }
+}

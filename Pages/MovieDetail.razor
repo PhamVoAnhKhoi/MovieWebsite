@@ -1,0 +1,49 @@
+@page "/moviedetail/{Id:long}"
+@using MovieWebsite.Models
+@inject IMovieReference MovieReference
+@inject NavigationManager NavigationManager
+
+<h3>Chi tiết Phim</h3>
+
+@if (movie == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="@movie.MovieImage" class="card-img-top" alt="@movie.Title" />
+                    </div>
+                    <div class="col-md-8"> 
+                        <h5 class="card-title">@movie.Title</h5>
+                        <p class="card-text">Thể loại: @movie.Genre</p>
+                        <p class="card-text">Đạo diễn: @movie.Director</p>
+                        <p class="card-text">Ngày phát hành: @movie.ReleaseDate.ToShortDateString()</p>    
+                        <a class = "btn btn-primary" href="/watchmovie/@movie.MovieId">Xem phim</a>      
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+}
+
+@code {
+    [Parameter]
+    public long? Id { get; set; }
+
+    private Movie movie;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id.HasValue)
+        {
+            movie = await MovieReference.GetMovieByIdAsync(Id.Value);
+        }
+    }
+}

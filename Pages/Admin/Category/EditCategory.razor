@@ -1,0 +1,43 @@
+@page "/admin/editcategory/{CategoryId:long}"
+@using MovieWebsite.Models
+@inject ICategoryReference CategoryReference
+@inject NavigationManager NavigationManager
+
+<h3>Chỉnh Sửa Thể Loại</h3>
+
+@if (category == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <EditForm Model="@category" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="Name">Tên Thể Loại</label>
+            <InputText id="Name" class="form-control" @bind-Value="category.Name" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Lưu</button>
+    </EditForm>
+}
+
+@code {
+    [Parameter]
+    public long CategoryId { get; set; }
+
+    private Category category;
+
+    protected override async Task OnInitializedAsync()
+    {
+        category = await CategoryReference.GetCategoryByIdAsync(CategoryId);
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await CategoryReference.UpdateCategoryAsync(category);
+        NavigationManager.NavigateTo("/admin/category");
+    }
+}
