@@ -1,55 +1,76 @@
-@page "/movies"
+@page "/"
 @using MovieWebsite.Models
-@inject IMovieReference MovieReference
-@inject NavigationManager NavigationManager
+@inject IMovieReference MovieService
 
-<h3>Danh sách Phim</h3>
-<div class = "container">
-    <div class = "row">
-        @if (movies == null)
-        {
-            <p><em>Loading...</em></p>
-        }
-        else
-        {
+<h3>Danh Sách Phim</h3>
+
+@if (movies == null)
+{
+    <p><em>Đang tải dữ liệu...</em></p>
+}
+else if (!movies.Any())
+{
+    <p>Không tìm thấy phim nào.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Tiêu Đề</th>
+                <th>Đạo Diễn</th>
+                <th>Quốc Gia</th>
+                <th>Thể Loại</th>
+                <th>Danh Mục</th>
+                <th>Thời Lượng (phút)</th>
+                <th>Ngày Phát Hành</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
             @foreach (var movie in movies)
             {
-                <div class="col-md-2">
-                    <a class="text-decoration-none" href="/productdetail/@movie.MovieId">
-                        <div class="card mb-4 shadow-sm text-dark fixed-height-card">
-                            <img src="@movie.MovieImage" class="card-img-top fixed-height-img" alt="@movie.Title" />
-                            <div class="card-body fixed-height-body">
-                                <strong class="card-title">@movie.Title</strong>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">@movie.ReleaseDate</small>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                <tr>
+                    <td>@movie.Title</td>
+                    <td>@movie.Director</td>
+                    <td>@movie.Country?.CountryName</td>
+                    <td>
+                        @if (movie.MovieGenres != null && movie.MovieGenres.Any())
+                        {
+                            @string.Join(", ", movie.MovieGenres.Select(mg => mg.Genre.GenreName))
+                        }
+                    </td>
+                    <td>
+                        @if (movie.MovieCategories != null && movie.MovieCategories.Any())
+                        {
+                            @string.Join(", ", movie.MovieCategories.Select(mc => mc.Category.CategoryName))
+                        }
+                    </td>
+                    <td>@movie.Duration</td>
+                    <td>@movie.ReleaseDate.ToShortDateString()</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" @onclick="() => ViewDetails(movie.MovieID)">Chi Tiết</button>
+                    </td>
+                </tr>
             }
-        }
-    </div>
-</div>
+        </tbody>
+    </table>
+}
 
-<style>
-    .fixed-height-card {
-        height: 100%; /* Đảm bảo thẻ card chiếm toàn bộ chiều cao của cột */
-    }
-    .fixed-height-body {
-        height: 100px; /* Chiều cao cố định cho thẻ card-body */
-        overflow: hidden; /* Đảm bảo nội dung không tràn ra ngoài */
-    }
-    .fixed-height-img {
-        height: 150px; /* Chiều cao cố định cho hình ảnh */
-        object-fit: cover; /* Đảm bảo hình ảnh được cắt để vừa với thẻ img */
-    }
-</style>
 @code {
     private IEnumerable<Movie> movies;
 
     protected override async Task OnInitializedAsync()
     {
-        movies = await MovieReference.GetAllMoviesAsync();
+        movies = await MovieService.GetAllMoviesAsync();
     }
+
+    private void ViewDetails(long movieId)
+    {
+        // Điều hướng đến trang chi tiết phim (sẽ được triển khai sau)
+        NavigationManager.NavigateTo($"/movies/{movieId}");
+    }
+
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
 }

@@ -1,4 +1,3 @@
-// Models/EFCategoryReference.cs
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -19,7 +18,7 @@ namespace MovieWebsite.Models
             return await _context.Categories.ToListAsync();
         }
 
-        public async Task<Category> GetCategoryByIdAsync(long? id)
+        public async Task<Category> GetCategoryByIdAsync(long id)
         {
             return await _context.Categories.FindAsync(id);
         }
@@ -32,12 +31,8 @@ namespace MovieWebsite.Models
 
         public async Task UpdateCategoryAsync(Category category)
         {
-            var existingCategory = await _context.Categories.FindAsync(category.CategoryId);
-            if (existingCategory != null)
-            {
-                existingCategory.Name = category.Name;
-                await _context.SaveChangesAsync();
-            }
+            _context.Categories.Update(category);
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteCategoryAsync(long? id)
@@ -49,11 +44,5 @@ namespace MovieWebsite.Models
                 await _context.SaveChangesAsync();
             }
         }
-        // public async Task<IEnumerable<Category>> GetCategoriesByLetterAsync(string letter)
-        // {
-        //     return await _context.Categories
-        //         .Where(c => c.Name.StartsWith(letter, StringComparison.OrdinalIgnoreCase))
-        //         .ToListAsync();
-        // }
     }
 }

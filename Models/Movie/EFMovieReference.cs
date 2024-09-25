@@ -16,25 +16,100 @@ namespace MovieWebsite.Models
 
         public async Task<IEnumerable<Movie>> GetAllMoviesAsync()
         {
-            return await _context.Movies.ToListAsync();
+            return await _context.Movies
+                .Include(m => m.Country)
+                .Include(m => m.MovieGenres)
+                    .ThenInclude(mg => mg.Genre)
+                .Include(m => m.MovieCategories)
+                    .ThenInclude(mc => mc.Category)
+                .ToListAsync();
         }
 
-       public async Task<Movie> GetMovieByIdAsync(long id)
+        public async Task<Movie> GetMovieByIdAsync(long id)
         {
-            return await _context.Movies.FindAsync(id);
+            return await _context.Movies
+                .Include(m => m.Country)
+                .Include(m => m.MovieGenres)
+                    .ThenInclude(mg => mg.Genre)
+                .Include(m => m.MovieCategories)
+                    .ThenInclude(mc => mc.Category)
+                .FirstOrDefaultAsync(m => m.MovieID == id);
         }
-
 
         public async Task<IEnumerable<Movie>> SearchMoviesAsync(string searchTerm)
         {
             if (string.IsNullOrWhiteSpace(searchTerm))
             {
-                return await _context.Movies.ToListAsync();
+                return await GetAllMoviesAsync();
             }
 
             return await _context.Movies
-                .Where(m => m.Title.Contains(searchTerm) || m.Genre.Contains(searchTerm) || m.Director.Contains(searchTerm))
+                .Include(m => m.Country)
+                .Include(m => m.MovieGenres)
+                    .ThenInclude(mg => mg.Genre)
+                .Include(m => m.MovieCategories)
+                    .ThenInclude(mc => mc.Category)
+                .Where(m => m.Title.Contains(searchTerm) || m.Director.Contains(searchTerm))
                 .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Genre>> GetGenresForMovieAsync(long movieId)
+        {
+            return await _context.MovieGenres
+                .Where(mg => mg.MovieID == movieId)
+                .Select(mg => mg.Genre)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Category>> GetCategoriesForMovieAsync(long movieId)
+        {
+            return await _context.MovieCategories
+                .Where(mc => mc.MovieID == movieId)
+                .Select(mc => mc.Category)
+                .ToListAsync();
+        }
+
+        public async Task UpdateMovieAsync(Movie movie)
+        {
+            // Cập nhật thông tin phim
+            _context.Movies.Update(movie);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddMovieAsync(Movie movie)
+        {
+            // Thêm phim vào DbContext
+            _context.Movies.Add(movie);
+            
+            // Thêm các thể loại và danh mục đã chọn
+            if (movie.MovieGenres != null && movie.MovieGenres.Any())
+            {
+                foreach (var movieGenre in movie.MovieGenres)
+                {
+                    _context.MovieGenres.Add(movieGenre);
+                }
+            }
+
+            if (movie.MovieCategories != null && movie.MovieCategories.Any())
+            {
+                foreach (var movieCategory in movie.MovieCategories)
+                {
+                    _context.MovieCategories.Add(movieCategory);
+                }
+            }
+
+            // Lưu thay đổi vào cơ sở dữ liệu
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteMovieAsync(long? id)
+        {
+            var movie = await _context.Movies.FindAsync(id);
+            if (movie != null)
+            {
+                _context.Movies.Remove(movie);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

@@ -1,0 +1,66 @@
+@page "/admin/countries"
+@using MovieWebsite.Models
+@layout AdminLayout
+@inject ICountryReference CountryReference
+
+<h3>Quản lý Quốc Gia</h3>
+
+<div class="mb-3">
+    <a class="btn btn-success" href="/admin/addcountry">Thêm Quốc Gia Mới</a>
+</div>
+
+@if (countries == null)
+{
+    <p><em>Đang tải dữ liệu...</em></p>
+}
+else if (!countries.Any())
+{
+    <p>Không có quốc gia nào để hiển thị.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên Quốc Gia</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var country in countries)
+            {
+                <tr>
+                    <td>@country.CountryID</td>
+                    <td>@country.CountryName</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm me-2" href="/admin/editgenre/@country.CountryID">Chỉnh Sửa</a>
+                        <button class="btn btn-danger btn-sm" @onclick="() => HandleDeleteCountry(country.CountryID)">Xóa</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IEnumerable<Country> countries;
+
+    protected override async Task OnInitializedAsync()
+    {
+        countries = await CountryReference.GetAllCountriesAsync();
+    }
+
+    private async Task HandleDeleteCountry(long countryId)
+    {
+        bool confirm = await JSRuntime.InvokeAsync<bool>("confirm", $"Bạn có chắc chắn muốn xóa thể loại này không?");
+        if (confirm)
+        {
+            await CountryReference.DeleteCountryAsync(countryId);
+            countries = await CountryReference.GetAllCountriesAsync(); // Refresh list
+        }
+    }
+
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; }
+}

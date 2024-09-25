@@ -1,0 +1,37 @@
+@page "/admin/addcountry"
+@using MovieWebsite.Models
+@layout AdminLayout
+@inject ICountryReference CountryReference
+@inject NavigationManager NavigationManager
+
+<h3>Thêm Quốc Gia Mới</h3>
+
+<EditForm Model="@newCountry" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="CountryName">Tên Quốc Gia</label>
+        <InputText id="CountryName" class="form-control" @bind-Value="newGenre.GenreName" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Thêm Thể Loại</button>
+    <button type="button" class="btn btn-secondary ms-2" @onclick="Cancel">Hủy</button>
+</EditForm>
+
+@code {
+    private Country newCountry = new Country();
+
+    private async Task HandleValidSubmit()
+    {
+        await CountryReference.AddCountryAsync(newCountry);
+        // Điều hướng về trang quản lý thể loại sau khi thêm thành công
+        NavigationManager.NavigateTo("/admin/countries");
+    }
+
+    private void Cancel()
+    {
+        // Điều hướng về trang quản lý thể loại nếu người dùng hủy bỏ
+        NavigationManager.NavigateTo("/admin/countries");
+    }
+}

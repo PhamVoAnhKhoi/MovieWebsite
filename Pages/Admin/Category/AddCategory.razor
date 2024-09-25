@@ -1,0 +1,37 @@
+@page "/admin/addcategory"
+@using MovieWebsite.Models
+@layout AdminLayout
+@inject ICategoryReference CategoryReference
+@inject NavigationManager NavigationManager
+
+<h3>Thêm Danh Mục Mới</h3>
+
+<EditForm Model="@newCategory" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="CategoryName">Tên Danh Mục</label>
+        <InputText id="CategoryName" class="form-control" @bind-Value="newCategory.CategoryName" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Thêm Danh Mục</button>
+    <button type="button" class="btn btn-secondary ms-2" @onclick="Cancel">Hủy</button>
+</EditForm>
+
+@code {
+    private Category newCategory = new Category();
+
+    private async Task HandleValidSubmit()
+    {
+        await CategoryReference.AddCategoryAsync(newCategory);
+        // Điều hướng về trang quản lý danh mục sau khi thêm thành công
+        NavigationManager.NavigateTo("/admin/categories");
+    }
+
+    private void Cancel()
+    {
+        // Điều hướng về trang quản lý danh mục nếu người dùng hủy bỏ
+        NavigationManager.NavigateTo("/admin/categories");
+    }
+}

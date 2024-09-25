@@ -1,0 +1,37 @@
+@page "/admin/addgenre"
+@using MovieWebsite.Models
+@layout AdminLayout
+@inject IGenreReference GenreReference
+@inject NavigationManager NavigationManager
+
+<h3>Thêm Thể Loại Mới</h3>
+
+<EditForm Model="@newGenre" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="GenreName">Tên Thể Loại</label>
+        <InputText id="GenreName" class="form-control" @bind-Value="newGenre.GenreName" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Thêm Thể Loại</button>
+    <button type="button" class="btn btn-secondary ms-2" @onclick="Cancel">Hủy</button>
+</EditForm>
+
+@code {
+    private Genre newGenre = new Genre();
+
+    private async Task HandleValidSubmit()
+    {
+        await GenreReference.AddGenreAsync(newGenre);
+        // Điều hướng về trang quản lý thể loại sau khi thêm thành công
+        NavigationManager.NavigateTo("/admin/genres");
+    }
+
+    private void Cancel()
+    {
+        // Điều hướng về trang quản lý thể loại nếu người dùng hủy bỏ
+        NavigationManager.NavigateTo("/admin/genres");
+    }
+}

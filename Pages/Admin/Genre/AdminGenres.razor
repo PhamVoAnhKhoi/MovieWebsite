@@ -1,0 +1,66 @@
+@page "/admin/genres"
+@using MovieWebsite.Models
+@layout AdminLayout
+@inject IGenreReference GenreReference
+
+<h3>Quản lý Thể Loại</h3>
+
+<div class="mb-3">
+    <a class="btn btn-success" href="/admin/addgenre">Thêm Thể Loại Mới</a>
+</div>
+
+@if (genres == null)
+{
+    <p><em>Đang tải dữ liệu...</em></p>
+}
+else if (!genres.Any())
+{
+    <p>Không có thể loại nào để hiển thị.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên Thể Loại</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var genre in genres)
+            {
+                <tr>
+                    <td>@genre.GenreID</td>
+                    <td>@genre.GenreName</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm me-2" href="/admin/editgenre/@genre.GenreID">Chỉnh Sửa</a>
+                        <button class="btn btn-danger btn-sm" @onclick="() => HandleDeleteGenre(genre.GenreID)">Xóa</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IEnumerable<Genre> genres;
+
+    protected override async Task OnInitializedAsync()
+    {
+        genres = await GenreReference.GetAllGenresAsync();
+    }
+
+    private async Task HandleDeleteGenre(long genreId)
+    {
+        bool confirm = await JSRuntime.InvokeAsync<bool>("confirm", $"Bạn có chắc chắn muốn xóa thể loại này không?");
+        if (confirm)
+        {
+            await GenreReference.DeleteGenreAsync(genreId);
+            genres = await GenreReference.GetAllGenresAsync(); // Refresh list
+        }
+    }
+
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; }
+}

@@ -1,0 +1,52 @@
+@page "/admin/editgenre/{GenreId:long}"
+@using MovieWebsite.Models
+@layout AdminLayout
+@inject IGenreReference GenreReference
+@inject NavigationManager NavigationManager
+
+<h3>Chỉnh Sửa Thể Loại</h3>
+
+@if (genre == null)
+{
+    <p><em>Đang tải dữ liệu...</em></p>
+}
+else
+{
+    <EditForm Model="@genre" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="GenreName">Tên Thể Loại</label>
+            <InputText id="GenreName" class="form-control" @bind-Value="genre.GenreName" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Cập Nhật</button>
+        <button type="button" class="btn btn-secondary ms-2" @onclick="Cancel">Hủy</button>
+    </EditForm>
+}
+
+@code {
+    [Parameter]
+    public long GenreId { get; set; }
+
+    private Genre genre;
+
+    protected override async Task OnInitializedAsync()
+    {
+        genre = await GenreReference.GetGenreByIdAsync(GenreId);
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await GenreReference.UpdateGenreAsync(genre);
+        // Điều hướng về trang quản lý thể loại sau khi cập nhật thành công
+        NavigationManager.NavigateTo("/admin/genres");
+    }
+
+    private void Cancel()
+    {
+        // Điều hướng về trang quản lý thể loại nếu người dùng hủy bỏ
+        NavigationManager.NavigateTo("/admin/genres");
+    }
+}

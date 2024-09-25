@@ -138,3 +138,5 @@ D:\Learn\WebNC\BlazorServer\MovieWebsite\MovieWebsite\bin\Debug\net8.0\tr\Micros
 D:\Learn\WebNC\BlazorServer\MovieWebsite\MovieWebsite\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Learn\WebNC\BlazorServer\MovieWebsite\MovieWebsite\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Learn\WebNC\BlazorServer\MovieWebsite\MovieWebsite\obj\Debug\net8.0\MovieWebsite.sourcelink.json
+D:\Learn\WebNC\BlazorServer\MovieWebsite\MovieWebsite\obj\Debug\net8.0\scopedcss\Shared\AdminLayout.razor.rz.scp.css
+D:\Learn\WebNC\BlazorServer\MovieWebsite\MovieWebsite\obj\Debug\net8.0\scopedcss\Shared\AdminNavMenu.razor.rz.scp.css

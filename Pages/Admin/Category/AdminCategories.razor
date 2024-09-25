@@ -1,0 +1,66 @@
+@page "/admin/categories"
+@using MovieWebsite.Models
+@layout AdminLayout
+@inject ICategoryReference CategoryReference
+
+<h3>Quản lý Danh Mục</h3>
+
+<div class="mb-3">
+    <a class="btn btn-success" href="/admin/addcategory">Thêm Danh Mục Mới</a>
+</div>
+
+@if (categories == null)
+{
+    <p><em>Đang tải dữ liệu...</em></p>
+}
+else if (!categories.Any())
+{
+    <p>Không có danh mục nào để hiển thị.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên Danh Mục</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in categories)
+            {
+                <tr>
+                    <td>@category.CategoryID</td>
+                    <td>@category.CategoryName</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm me-2" href="/admin/editcategory/@category.CategoryID">Chỉnh Sửa</a>
+                        <button class="btn btn-danger btn-sm" @onclick="() => HandleDeleteCategory(category.CategoryID)">Xóa</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IEnumerable<Category> categories;
+
+    protected override async Task OnInitializedAsync()
+    {
+        categories = await CategoryReference.GetAllCategoriesAsync();
+    }
+
+    private async Task HandleDeleteCategory(long categoryId)
+    {
+        bool confirm = await JSRuntime.InvokeAsync<bool>("confirm", $"Bạn có chắc chắn muốn xóa danh mục này không?");
+        if (confirm)
+        {
+            await CategoryReference.DeleteCategoryAsync(categoryId);
+            categories = await CategoryReference.GetAllCategoriesAsync(); // Refresh list
+        }
+    }
+
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; }
+}

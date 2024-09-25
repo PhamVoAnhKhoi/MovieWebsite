@@ -1,0 +1,142 @@
+@page "/admin/addmovie"
+@using MovieWebsite.Models
+@layout AdminLayout
+@inject IMovieReference MovieReference
+@inject IGenreReference GenreReference
+@inject ICategoryReference CategoryReference
+@inject ICountryReference CountryReference
+@inject NavigationManager NavigationManager
+
+<h3>Thêm Phim Mới</h3>
+
+<EditForm Model="@newMovie" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="Title">Tiêu Đề</label>
+        <InputText id="Title" class="form-control" @bind-Value="newMovie.Title" />
+    </div>
+    
+    <div class="form-group">
+        <label for="Description">Mô Tả</label>
+        <InputTextArea id="Description" class="form-control" @bind-Value="newMovie.Description" />
+    </div>
+
+    <div class="form-group">
+        <label for="Cast">Diễn Viên</label>
+        <InputText id="Cast" class="form-control" @bind-Value="newMovie.Cast" />
+    </div>
+
+    <div class="form-group">
+        <label for="Director">Đạo Diễn</label>
+        <InputText id="Director" class="form-control" @bind-Value="newMovie.Director" />
+    </div>
+
+    <div class="form-group">
+        <label for="ReleaseDate">Ngày Phát Hành</label>
+        <InputDate id="ReleaseDate" class="form-control" @bind-Value="newMovie.ReleaseDate" />
+    </div>
+
+    <div class="form-group">
+        <label for="PosterURL">Link Hình Ảnh</label>
+        <InputText id="PosterURL" class="form-control" @bind-Value="newMovie.PosterURL" />
+    </div>
+
+    <div class="form-group">
+        <label for="VideoURL">Link Phim</label>
+        <InputText id="VideoURL" class="form-control" @bind-Value="newMovie.VideoURL" />
+    </div>
+
+    <div class="form-group">
+        <label for="Country">Quốc Gia</label>
+        <InputSelect id="Country" class="form-control" @bind-Value="newMovie.CountryID">
+            <option value="">-- Chọn Quốc Gia --</option>
+            @foreach (var country in countries)
+            {
+                <option value="@country.CountryID">@country.CountryName</option>
+            }
+        </InputSelect>
+    </div>
+
+    <div class="form-group">
+        <label for="Genres">Thể Loại</label>
+        <InputSelect id="Genres" class="form-control" multiple @bind-Value="newMovie.SelectedGenreIDs">
+            @foreach (var genre in genres)
+            {
+                <option value="@genre.GenreID">@genre.GenreName</option>
+            }
+        </InputSelect>
+    </div>
+
+    <div class="form-group">
+        <label for="Categories">Danh Mục</label>
+        <InputSelect id="Categories" class="form-control" multiple @bind-Value="newMovie.SelectedCategoryIDs">
+            @foreach (var category in categories)
+            {
+                <option value="@category.CategoryID">@category.CategoryName</option>
+            }
+        </InputSelect>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Thêm Phim</button>
+</EditForm>
+
+@code {
+    private AddMovieViewModel newMovie = new AddMovieViewModel();
+    private List<Country> countries = new List<Country>();
+    private List<Genre> genres = new List<Genre>();
+    private List<Category> categories = new List<Category>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Load các dữ liệu cần thiết
+        countries = (await CountryReference.GetAllCountriesAsync()).ToList();
+        genres = (await GenreReference.GetAllGenresAsync()).ToList();
+        categories = (await CategoryReference.GetAllCategoriesAsync()).ToList();
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        // Tạo đối tượng Movie
+        var movie = new Movie
+        {
+            Title = newMovie.Title,
+            Description = newMovie.Description,
+            Cast = newMovie.Cast,
+            Director = newMovie.Director,
+            ReleaseDate = newMovie.ReleaseDate,
+            Duration = newMovie.Duration,
+            PosterURL = newMovie.PosterURL,
+            VideoURL = newMovie.VideoURL,
+            CountryID = newMovie.CountryID,
+            // Khởi tạo các thuộc tính navigation
+            MovieGenres = new List<MovieGenre>(),
+            MovieCategories = new List<MovieCategory>()
+        };
+
+        // Thêm các thể loại
+        foreach (var genreId in newMovie.SelectedGenreIDs)
+        {
+            movie.MovieGenres.Add(new MovieGenre
+            {
+                GenreID = genreId
+            });
+        }
+
+        // Thêm các danh mục
+        foreach (var categoryId in newMovie.SelectedCategoryIDs)
+        {
+            movie.MovieCategories.Add(new MovieCategory
+            {
+                CategoryID = categoryId
+            });
+        }
+
+        // Thêm phim vào cơ sở dữ liệu
+        await MovieReference.AddMovieAsync(movie);
+
+        // Điều hướng về danh sách phim sau khi thêm thành công
+        NavigationManager.NavigateTo("/admin/movies");
+    }
+}

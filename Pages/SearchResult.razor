@@ -1,4 +1,4 @@
-@page "/search"
+@* @page "/search"
 @using MovieWebsite.Models
 @inject IMovieReference MovieReference
 @inject NavigationManager NavigationManager
@@ -21,7 +21,7 @@
                             <div class="card-body fixed-height-body">
                                 <strong class="card-title">@movie.Title</strong>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">@movie.ReleaseDate.ToShortDateString()</small>
+                                    <small class="text-muted">@movie.ReleaseYear</small>
                                 </div>
                             </div>
                         </div>
@@ -73,4 +73,4 @@
             movies = await MovieReference.GetAllMoviesAsync();
         }
     }
-}
+} *@

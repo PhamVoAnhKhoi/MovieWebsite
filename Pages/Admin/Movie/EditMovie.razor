@@ -1,0 +1,71 @@
+@* @page "/admin/editmovie/{MovieId:long}"
+@layout AdminLayout
+@using MovieWebsite.Models
+@inject IMovieReference MovieReference
+@inject ICategoryReference CategoryReference
+@inject NavigationManager NavigationManager
+
+<h3>Chỉnh Sửa Phim</h3>
+
+@if (movie == null || categories == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <EditForm Model="@movie" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="Title">Tên Phim</label>
+            <InputText id="Title" class="form-control" @bind-Value="movie.Title" />
+        </div>
+
+        <div class="form-group">
+            <label for="Director">Đạo Diễn</label>
+
+        </div>
+
+        <div class="form-group">
+            <label for="ReleaseDate">Ngày Phát Hành</label>
+            <InputDate id="ReleaseDate" class="form-control" @bind-Value="movie.ReleaseYear" />
+        </div>
+
+        <div class="form-group">
+            <label for="MovieImage">Link Hình Ảnh</label>
+            <InputText id="MovieImage" class="form-control" @bind-Value="movie.MovieImage" />
+        </div>
+
+        <div class="form-group">
+            <label for="Categories">Thể Loại</label>
+            <InputSelect id="Categories" class="form-control" multiple @bind-Value="selectedCategoryIds">
+                @foreach (var category in categories)
+                {
+                    <option value="@category.CategoryId">@category.Name</option>
+                }
+            </InputSelect>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Lưu</button>
+    </EditForm>
+}
+
+@code {
+    [Parameter]
+    public long MovieId { get; set; }
+
+    private Movie movie;
+    private List<Category> categories;
+    private List<long> selectedCategoryIds = new List<long>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        movie = await MovieReference.GetMovieByIdAsync(MovieId);
+        categories = (await CategoryReference.GetAllCategoriesAsync()).ToList();
+
+        //selectedCategoryIds = movie.MovieCategories.Select(mc => mc.CategoryId).ToList(); // Lấy danh sách thể loại hiện có của phim
+    }
+
+   
+} *@

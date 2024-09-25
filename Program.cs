@@ -15,10 +15,15 @@ builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddDbContext<MovieDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MovieWebsite")));
 
-//Model Movie
+// Đăng ký các repository
 builder.Services.AddScoped<IMovieReference, EFMovieReference>();
-//Model Category
+builder.Services.AddScoped<IGenreReference, EFGenreReference>();
 builder.Services.AddScoped<ICategoryReference, EFCategoryReference>();
+builder.Services.AddScoped<ICountryReference, EFCountryReference>();
+builder.Services.AddScoped<IUserReference, EFUserReference>();
+
+// Thêm các dịch vụ khác (Controllers, Razor Pages, v.v.)
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 

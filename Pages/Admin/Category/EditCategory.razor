@@ -1,13 +1,14 @@
 @page "/admin/editcategory/{CategoryId:long}"
 @using MovieWebsite.Models
+@layout AdminLayout
 @inject ICategoryReference CategoryReference
 @inject NavigationManager NavigationManager
 
-<h3>Chỉnh Sửa Thể Loại</h3>
+<h3>Chỉnh Sửa Danh Mục</h3>
 
 @if (category == null)
 {
-    <p><em>Loading...</em></p>
+    <p><em>Đang tải dữ liệu...</em></p>
 }
 else
 {
@@ -16,11 +17,12 @@ else
         <ValidationSummary />
 
         <div class="form-group">
-            <label for="Name">Tên Thể Loại</label>
-            <InputText id="Name" class="form-control" @bind-Value="category.Name" />
+            <label for="CategoryName">Tên Danh Mục</label>
+            <InputText id="CategoryName" class="form-control" @bind-Value="category.CategoryName" />
         </div>
 
-        <button type="submit" class="btn btn-primary">Lưu</button>
+        <button type="submit" class="btn btn-primary">Cập Nhật</button>
+        <button type="button" class="btn btn-secondary ms-2" @onclick="Cancel">Hủy</button>
     </EditForm>
 }
 
@@ -38,6 +40,13 @@ else
     private async Task HandleValidSubmit()
     {
         await CategoryReference.UpdateCategoryAsync(category);
-        NavigationManager.NavigateTo("/admin/category");
+        // Điều hướng về trang quản lý danh mục sau khi cập nhật thành công
+        NavigationManager.NavigateTo("/admin/categories");
+    }
+
+    private void Cancel()
+    {
+        // Điều hướng về trang quản lý danh mục nếu người dùng hủy bỏ
+        NavigationManager.NavigateTo("/admin/categories");
     }
 }

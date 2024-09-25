@@ -1,4 +1,4 @@
-@page "/moviedetail/{Id:long}"
+@* @page "/moviedetail/{Id:long}"
 @using MovieWebsite.Models
 @inject IMovieReference MovieReference
 @inject NavigationManager NavigationManager
@@ -18,18 +18,21 @@ else
                     <div class="col-md-4">
                         <img src="@movie.MovieImage" class="card-img-top" alt="@movie.Title" />
                     </div>
-                    <div class="col-md-8"> 
+                    <div class="col-md-8">
                         <h5 class="card-title">@movie.Title</h5>
-                        <p class="card-text">Thể loại: @movie.Genre</p>
-                        <p class="card-text">Đạo diễn: @movie.Director</p>
-                        <p class="card-text">Ngày phát hành: @movie.ReleaseDate.ToShortDateString()</p>    
-                        <a class = "btn btn-primary" href="/watchmovie/@movie.MovieId">Xem phim</a>      
+                        <p class="card-text">Thể loại: 
+                            @foreach (var category in categories)
+                            {
+                                <span class="badge bg-secondary">@category.Name</span>
+                            }
+                        </p>
+                        <p class="card-text">Đạo diễn:</p>
+                        <p class="card-text">Ngày phát hành: @movie.ReleaseYear</p>
+                        <a class="btn btn-primary" href="/watchmovie/@movie.MovieId">Xem phim</a>
                     </div>
                 </div>
             </div>
-
         </div>
-        
     </div>
 }
 
@@ -38,12 +41,14 @@ else
     public long? Id { get; set; }
 
     private Movie movie;
+    private IEnumerable<Category> categories;
 
     protected override async Task OnInitializedAsync()
     {
         if (Id.HasValue)
         {
             movie = await MovieReference.GetMovieByIdAsync(Id.Value);
+            categories = await MovieReference.GetCategoriesForMovieAsync(Id.Value);
         }
     }
-}
+} *@

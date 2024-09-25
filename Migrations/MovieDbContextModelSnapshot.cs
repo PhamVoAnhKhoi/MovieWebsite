@@ -24,55 +24,387 @@ namespace MovieWebsite.Migrations
 
             modelBuilder.Entity("MovieWebsite.Models.Category", b =>
                 {
-                    b.Property<long?>("CategoryId")
+                    b.Property<long>("CategoryID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long?>("CategoryId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("CategoryID"));
 
-                    b.Property<string>("Name")
+                    b.Property<string>("CategoryName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("CategoryID");
 
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("MovieWebsite.Models.Movie", b =>
+            modelBuilder.Entity("MovieWebsite.Models.Country", b =>
                 {
-                    b.Property<long?>("MovieId")
+                    b.Property<long>("CountryID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long?>("MovieId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("CountryID"));
+
+                    b.Property<string>("CountryName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("CountryID");
+
+                    b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.Genre", b =>
+                {
+                    b.Property<long>("GenreID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("GenreID"));
+
+                    b.Property<string>("GenreName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("GenreID");
+
+                    b.ToTable("Genres");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.Movie", b =>
+                {
+                    b.Property<long>("MovieID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("MovieID"));
+
+                    b.Property<string>("Cast")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<long>("CountryID")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Director")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("Genre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
 
-                    b.Property<string>("MovieImage")
+                    b.Property<string>("PosterURL")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MovieUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
-                    b.HasKey("MovieId");
+                    b.Property<string>("VideoURL")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("MovieID");
+
+                    b.HasIndex("CountryID");
 
                     b.ToTable("Movies");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.MovieCategory", b =>
+                {
+                    b.Property<long>("MovieID")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CategoryID")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("MovieID", "CategoryID");
+
+                    b.HasIndex("CategoryID");
+
+                    b.ToTable("MovieCategories");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.MovieGenre", b =>
+                {
+                    b.Property<long>("MovieID")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("GenreID")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("MovieID", "GenreID");
+
+                    b.HasIndex("GenreID");
+
+                    b.ToTable("MovieGenres");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.Review", b =>
+                {
+                    b.Property<long>("ReviewID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("ReviewID"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("MovieID")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ReviewDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("UserID")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("ReviewID");
+
+                    b.HasIndex("MovieID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("Reviews");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.Role", b =>
+                {
+                    b.Property<long>("RoleID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("RoleID"));
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("RoleID");
+
+                    b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.User", b =>
+                {
+                    b.Property<long>("UserID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("UserID"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime>("RegistrationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("RoleID")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("UserID");
+
+                    b.HasIndex("RoleID");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.WatchHistory", b =>
+                {
+                    b.Property<long>("WatchID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("WatchID"));
+
+                    b.Property<long>("MovieID")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserID")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("WatchDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("WatchID");
+
+                    b.HasIndex("MovieID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("WatchHistories");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.Movie", b =>
+                {
+                    b.HasOne("MovieWebsite.Models.Country", "Country")
+                        .WithMany("Movies")
+                        .HasForeignKey("CountryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.MovieCategory", b =>
+                {
+                    b.HasOne("MovieWebsite.Models.Category", "Category")
+                        .WithMany("MovieCategories")
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MovieWebsite.Models.Movie", "Movie")
+                        .WithMany("MovieCategories")
+                        .HasForeignKey("MovieID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.MovieGenre", b =>
+                {
+                    b.HasOne("MovieWebsite.Models.Genre", "Genre")
+                        .WithMany("MovieGenres")
+                        .HasForeignKey("GenreID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MovieWebsite.Models.Movie", "Movie")
+                        .WithMany("MovieGenres")
+                        .HasForeignKey("MovieID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Genre");
+
+                    b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.Review", b =>
+                {
+                    b.HasOne("MovieWebsite.Models.Movie", "Movie")
+                        .WithMany("Reviews")
+                        .HasForeignKey("MovieID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MovieWebsite.Models.User", "User")
+                        .WithMany("Reviews")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.User", b =>
+                {
+                    b.HasOne("MovieWebsite.Models.Role", "Role")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.WatchHistory", b =>
+                {
+                    b.HasOne("MovieWebsite.Models.Movie", "Movie")
+                        .WithMany("WatchHistories")
+                        .HasForeignKey("MovieID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MovieWebsite.Models.User", "User")
+                        .WithMany("WatchHistories")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.Category", b =>
+                {
+                    b.Navigation("MovieCategories");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.Country", b =>
+                {
+                    b.Navigation("Movies");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.Genre", b =>
+                {
+                    b.Navigation("MovieGenres");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.Movie", b =>
+                {
+                    b.Navigation("MovieCategories");
+
+                    b.Navigation("MovieGenres");
+
+                    b.Navigation("Reviews");
+
+                    b.Navigation("WatchHistories");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.Role", b =>
+                {
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.User", b =>
+                {
+                    b.Navigation("Reviews");
+
+                    b.Navigation("WatchHistories");
                 });
 #pragma warning restore 612, 618
         }
