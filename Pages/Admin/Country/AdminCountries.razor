@@ -34,7 +34,7 @@ else
                     <td>@country.CountryID</td>
                     <td>@country.CountryName</td>
                     <td>
-                        <a class="btn btn-primary btn-sm me-2" href="/admin/editgenre/@country.CountryID">Chỉnh Sửa</a>
+                        <a class="btn btn-primary btn-sm me-2" href="/admin/editcountry/@country.CountryID">Chỉnh Sửa</a>
                         <button class="btn btn-danger btn-sm" @onclick="() => HandleDeleteCountry(country.CountryID)">Xóa</button>
                     </td>
                 </tr>
