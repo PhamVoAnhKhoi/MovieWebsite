@@ -42,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ291bnRyeVxBZG1pbkNvdW50cmllcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Admin/Country/EditCategory.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ291bnRyeVxFZGl0Q2F0ZWdvcnkucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Admin/Genre/AddGenre.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cR2VucmVcQWRkR2VucmUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

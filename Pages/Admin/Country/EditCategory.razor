@@ -1,0 +1,52 @@
+@page "/admin/editcountry/{CountryId:long}"
+@using MovieWebsite.Models
+@layout AdminLayout
+@inject ICountryReference CountryReference
+@inject NavigationManager NavigationManager
+
+<h3>Chỉnh Sửa Danh Mục</h3>
+
+@if (country == null)
+{
+    <p><em>Đang tải dữ liệu...</em></p>
+}
+else
+{
+    <EditForm Model="@country" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="CountryName">Tên Danh Mục</label>
+            <InputText id="CountryName" class="form-control" @bind-Value="country.CountryName" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Cập Nhật</button>
+        <button type="button" class="btn btn-secondary ms-2" @onclick="Cancel">Hủy</button>
+    </EditForm>
+}
+
+@code {
+    [Parameter]
+    public long CountryId { get; set; }
+
+    private Country country;
+
+    protected override async Task OnInitializedAsync()
+    {
+        country = await CountryReference.GetCountryByIdAsync(CountryId);
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await CountryReference.UpdateCountryAsync(country);
+        // Điều hướng về trang quản lý danh mục sau khi cập nhật thành công
+        NavigationManager.NavigateTo("/admin/countries");
+    }
+
+    private void Cancel()
+    {
+        // Điều hướng về trang quản lý danh mục nếu người dùng hủy bỏ
+        NavigationManager.NavigateTo("/admin/countries");
+    }
+}
