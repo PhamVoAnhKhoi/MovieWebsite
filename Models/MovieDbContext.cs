@@ -16,10 +16,10 @@ namespace MovieWebsite.Models
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Review> Reviews { get; set; }
-         public DbSet<WatchHistory> WatchHistories { get; set; }
+        public DbSet<WatchHistory> WatchHistories { get; set; }
         public DbSet<MovieGenre> MovieGenres { get; set; }
         public DbSet<MovieCategory> MovieCategories { get; set; }
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -61,7 +61,7 @@ namespace MovieWebsite.Models
                 .HasOne(u => u.Role)
                 .WithMany(r => r.Users)
                 .HasForeignKey(u => u.RoleID)
-                .OnDelete(DeleteBehavior.Restrict); // Hoặc DeleteBehavior.ClientSetNull nếu muốn RoleID nullable
+                .OnDelete(DeleteBehavior.Restrict);
 
             // Cấu hình các mối quan hệ khác
             modelBuilder.Entity<Review>()
@@ -88,8 +88,5 @@ namespace MovieWebsite.Models
                 .HasForeignKey(w => w.MovieID)
                 .OnDelete(DeleteBehavior.Cascade);
         }
-
     }
 }
-//Cascade cho các bảng liên kết 
-//Restrict cho mối quan hệ giữa User và Role để tránh việc xóa một Role khi vẫn còn User liên kết.

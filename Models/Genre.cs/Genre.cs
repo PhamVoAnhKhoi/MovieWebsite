@@ -14,5 +14,6 @@ namespace MovieWebsite.Models
 
         // Navigation Properties
         public ICollection<MovieGenre> MovieGenres { get; set; } = new List<MovieGenre>();
+        public bool Selected { get; set; } // Thêm thuộc tính này để theo dõi trạng thái checkbox
     }
 }

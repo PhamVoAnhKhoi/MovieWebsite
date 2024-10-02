@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace MovieWebsite.Models
 {
-    public interface IUserReference
+    public interface IUserRepository
     {
         Task<IEnumerable<User>> GetAllUsersAsync();
         Task<User> GetUserByIdAsync(long id);

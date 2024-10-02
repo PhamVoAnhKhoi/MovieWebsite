@@ -16,11 +16,11 @@ builder.Services.AddDbContext<MovieDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MovieWebsite")));
 
 // Đăng ký các repository
-builder.Services.AddScoped<IMovieReference, EFMovieReference>();
-builder.Services.AddScoped<IGenreReference, EFGenreReference>();
-builder.Services.AddScoped<ICategoryReference, EFCategoryReference>();
-builder.Services.AddScoped<ICountryReference, EFCountryReference>();
-builder.Services.AddScoped<IUserReference, EFUserReference>();
+builder.Services.AddScoped<IMovieRepository, EFMovieRepository>();
+builder.Services.AddScoped<IGenreRepository, EFGenreRepository>();
+builder.Services.AddScoped<ICategoryRepository, EFCategoryRepository>();
+builder.Services.AddScoped<ICountryRepository, EFCountryRepository>();
+builder.Services.AddScoped<IUserRepository, EFUserRepository>();
 
 // Thêm các dịch vụ khác (Controllers, Razor Pages, v.v.)
 builder.Services.AddControllersWithViews();

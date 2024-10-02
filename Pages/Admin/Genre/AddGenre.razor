@@ -1,7 +1,7 @@
 @page "/admin/addgenre"
 @using MovieWebsite.Models
 @layout AdminLayout
-@inject IGenreReference GenreReference
+@inject IGenreRepository GenreRepository
 @inject NavigationManager NavigationManager
 
 <h3>Thêm Thể Loại Mới</h3>
@@ -24,7 +24,7 @@
 
     private async Task HandleValidSubmit()
     {
-        await GenreReference.AddGenreAsync(newGenre);
+        await GenreRepository.AddGenreAsync(newGenre);
         // Điều hướng về trang quản lý thể loại sau khi thêm thành công
         NavigationManager.NavigateTo("/admin/genres");
     }

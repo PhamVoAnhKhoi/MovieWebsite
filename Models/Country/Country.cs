@@ -13,6 +13,7 @@ namespace MovieWebsite.Models
         public string CountryName { get; set; }
 
         // Navigation Properties
-        public ICollection<Movie> Movies { get; set; }
+        // Một quốc gia có nhiều movie
+        public ICollection<Movie> Movies { get; set; } = new List<Movie>();
     }
 }

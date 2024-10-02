@@ -43,7 +43,8 @@ namespace MovieWebsite.Migrations
                 {
                     GenreID = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GenreName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    GenreName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Selected = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

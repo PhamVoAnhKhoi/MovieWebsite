@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace MovieWebsite.Models
 {
-    public interface ICountryReference
+    public interface ICountryRepository
     {
         Task<IEnumerable<Country>> GetAllCountriesAsync();
         Task<Country> GetCountryByIdAsync(long id);

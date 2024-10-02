@@ -1,7 +1,7 @@
 @page "/admin/countries"
 @using MovieWebsite.Models
 @layout AdminLayout
-@inject ICountryReference CountryReference
+@inject ICountryRepository CountryRepository
 
 <h3>Quản lý Quốc Gia</h3>
 
@@ -48,7 +48,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        countries = await CountryReference.GetAllCountriesAsync();
+        countries = await CountryRepository.GetAllCountriesAsync();
     }
 
     private async Task HandleDeleteCountry(long countryId)
@@ -56,8 +56,8 @@ else
         bool confirm = await JSRuntime.InvokeAsync<bool>("confirm", $"Bạn có chắc chắn muốn xóa thể loại này không?");
         if (confirm)
         {
-            await CountryReference.DeleteCountryAsync(countryId);
-            countries = await CountryReference.GetAllCountriesAsync(); // Refresh list
+            await CountryRepository.DeleteCountryAsync(countryId);
+            countries = await CountryRepository.GetAllCountriesAsync(); // Refresh list
         }
     }
 

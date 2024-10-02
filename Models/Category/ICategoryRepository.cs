@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace MovieWebsite.Models
 {
-    public interface ICategoryReference
+    public interface ICategoryRepository
     {
         Task<IEnumerable<Category>> GetAllCategoriesAsync();
         Task<Category> GetCategoryByIdAsync(long id);

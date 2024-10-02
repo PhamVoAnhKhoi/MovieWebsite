@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Models",
+    "\\Models\\Movie",
+    "\\Pages",
+    "\\Pages\\Admin",
+    "\\Pages\\Admin\\Movie"
+  ],
+  "SelectedNode": "\\Pages\\Admin\\Movie\\AddMovie.razor",
+  "PreviewInSolutionExplorer": false
+}

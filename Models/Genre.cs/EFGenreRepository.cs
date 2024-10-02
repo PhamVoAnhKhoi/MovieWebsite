@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace MovieWebsite.Models
 {
-    public class EFGenreReference : IGenreReference
+    public class EFGenreRepository : IGenreRepository
     {
         private readonly MovieDbContext _context;
 
-        public EFGenreReference(MovieDbContext context)
+        public EFGenreRepository(MovieDbContext context)
         {
             _context = context;
         }

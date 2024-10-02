@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace MovieWebsite.Models
 {
-    public interface IMovieReference
+    public interface IMovieRepository
     {
         Task<IEnumerable<Movie>> GetAllMoviesAsync();
         Task<Movie> GetMovieByIdAsync(long id);

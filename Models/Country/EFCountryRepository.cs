@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace MovieWebsite.Models
 {
-    public class EFCountryReference : ICountryReference
+    public class EFCountryRepository : ICountryRepository
     {
         private readonly MovieDbContext _context;
 
-        public EFCountryReference(MovieDbContext context)
+        public EFCountryRepository(MovieDbContext context)
         {
             _context = context;
         }

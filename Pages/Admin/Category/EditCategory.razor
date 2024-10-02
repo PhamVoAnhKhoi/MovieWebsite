@@ -1,7 +1,7 @@
 @page "/admin/editcategory/{CategoryId:long}"
 @using MovieWebsite.Models
 @layout AdminLayout
-@inject ICategoryReference CategoryReference
+@inject ICategoryRepository CategoryRepository
 @inject NavigationManager NavigationManager
 
 <h3>Chỉnh Sửa Danh Mục</h3>
@@ -34,12 +34,12 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        category = await CategoryReference.GetCategoryByIdAsync(CategoryId);
+        category = await CategoryRepository.GetCategoryByIdAsync(CategoryId);
     }
 
     private async Task HandleValidSubmit()
     {
-        await CategoryReference.UpdateCategoryAsync(category);
+        await CategoryRepository.UpdateCategoryAsync(category);
         // Điều hướng về trang quản lý danh mục sau khi cập nhật thành công
         NavigationManager.NavigateTo("/admin/categories");
     }

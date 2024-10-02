@@ -1,7 +1,7 @@
 @page "/admin/genres"
 @using MovieWebsite.Models
 @layout AdminLayout
-@inject IGenreReference GenreReference
+@inject IGenreRepository GenreRepository
 
 <h3>Quản lý Thể Loại</h3>
 
@@ -48,7 +48,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        genres = await GenreReference.GetAllGenresAsync();
+        genres = await GenreRepository.GetAllGenresAsync();
     }
 
     private async Task HandleDeleteGenre(long genreId)
@@ -56,8 +56,8 @@ else
         bool confirm = await JSRuntime.InvokeAsync<bool>("confirm", $"Bạn có chắc chắn muốn xóa thể loại này không?");
         if (confirm)
         {
-            await GenreReference.DeleteGenreAsync(genreId);
-            genres = await GenreReference.GetAllGenresAsync(); // Refresh list
+            await GenreRepository.DeleteGenreAsync(genreId);
+            genres = await GenreRepository.GetAllGenresAsync(); // Refresh list
         }
     }
 

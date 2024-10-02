@@ -2,7 +2,7 @@
 @page "/admin/movies"
 @layout AdminLayout
 @using MovieWebsite.Models
-@inject IMovieReference MovieReference
+@inject IMovieRepository MovieRepository
 
 <h3>Quản lý Phim</h3>
 
@@ -25,21 +25,37 @@ else
         </div>
 
         <a class="btn btn-success mb-3" href="/admin/addmovie">Thêm Phim Mới</a>
-        <ul class="list-group">
-            @foreach (var movie in movies)
-            {
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <span>
-                        <img src="@movie.PosterURL" alt="@movie.Title" width="50" />
-                        @movie.Title (@movie.ReleaseDate)
-                    </span>
-                    <span>
-                        <a class="btn btn-primary btn-sm" href="/admin/editmovie/@movie.MovieID">Chỉnh Sửa</a>
-                        <button class="btn btn-danger btn-sm" @onclick="()=> HandleDeleteMovie(movie.MovieID)">Xóa</button>
-                    </span>
-                </li>
-            }
-        </ul>
+        <div class="row">
+            <table class="table table-sm table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Poster</th>
+                        <th>Name</th>
+                        <th>Quốc Gia</th>
+                        <td/>
+                    </tr>          
+                </thead>
+                <tbody>
+                    @foreach (var movie in movies)
+                    {
+                        <tr>
+                            <td>@movie.MovieID</td>
+                            <td style="width: 8%">
+                                <img style="width: 50%"  src="@movie.PosterURL"/>
+                            </td>
+                            <td>@movie.Title</td>
+                            <td>@movie.CountryName</td>
+                            <td>
+                                <a class="btn btn-info btn-sm" href="/admin/detailmovie/@movie.MovieID"> Details </a>
+                                <a class="btn btn-warning btn-sm" href="/admin/editmovie/@movie.MovieID"> Edit </a>
+                                <button class="btn btn-danger btn-sm" @onclick="()=> HandleDeleteMovie(movie.MovieID)">Xóa</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 }
 
@@ -50,7 +66,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        allMovies = await MovieReference.GetAllMoviesAsync();
+        allMovies = await MovieRepository.GetAllMoviesAsync();
         movies = allMovies; // Ban đầu hiển thị tất cả phim
     }
 
@@ -73,8 +89,8 @@ else
     {
         if (movieId.HasValue)
         {
-            await MovieReference.DeleteMovieAsync(movieId);
-            allMovies = await MovieReference.GetAllMoviesAsync(); // Refresh list
+            await MovieRepository.DeleteMovieAsync(movieId);
+            allMovies = await MovieRepository.GetAllMoviesAsync(); // Refresh list
             movies = allMovies; // Reset the displayed list
         }
     }

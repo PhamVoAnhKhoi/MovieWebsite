@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace MovieWebsite.Models
 {
-    public class EFUserReference : IUserReference
+    public class EFUserRepository: IUserRepository
     {
         private readonly MovieDbContext _context;
 
-        public EFUserReference(MovieDbContext context)
+        public EFUserRepository(MovieDbContext context)
         {
             _context = context;
         }

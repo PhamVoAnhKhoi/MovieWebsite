@@ -71,6 +71,9 @@ namespace MovieWebsite.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<bool>("Selected")
+                        .HasColumnType("bit");
+
                     b.HasKey("GenreID");
 
                     b.ToTable("Genres");
@@ -91,6 +94,10 @@ namespace MovieWebsite.Migrations
 
                     b.Property<long>("CountryID")
                         .HasColumnType("bigint");
+
+                    b.Property<string>("CountryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .IsRequired()

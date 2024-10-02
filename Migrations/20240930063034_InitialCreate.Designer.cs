@@ -12,7 +12,7 @@ using MovieWebsite.Models;
 namespace MovieWebsite.Migrations
 {
     [DbContext(typeof(MovieDbContext))]
-    [Migration("20240923193412_InitialCreate")]
+    [Migration("20240930063034_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -73,6 +73,9 @@ namespace MovieWebsite.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("Selected")
+                        .HasColumnType("bit");
 
                     b.HasKey("GenreID");
 

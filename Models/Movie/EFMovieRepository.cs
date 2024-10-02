@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace MovieWebsite.Models
 {
-    public class EFMovieReference : IMovieReference
+    public class EFMovieRepository: IMovieRepository
     {
         private readonly MovieDbContext _context;
 
-        public EFMovieReference(MovieDbContext context)
+        public EFMovieRepository(MovieDbContext context)
         {
             _context = context;
         }
@@ -78,8 +78,7 @@ namespace MovieWebsite.Models
 
         public async Task AddMovieAsync(Movie movie)
         {
-            // Thêm phim vào DbContext
-            _context.Movies.Add(movie);
+            
             
             // Thêm các thể loại và danh mục đã chọn
             if (movie.MovieGenres != null && movie.MovieGenres.Any())
@@ -97,7 +96,8 @@ namespace MovieWebsite.Models
                     _context.MovieCategories.Add(movieCategory);
                 }
             }
-
+            // Thêm phim vào DbContext
+            _context.Movies.Add(movie);
             // Lưu thay đổi vào cơ sở dữ liệu
             await _context.SaveChangesAsync();
         }

@@ -37,6 +37,7 @@ namespace MovieWebsite.Models
 
         // Foreign Key
         public long CountryID { get; set; }
+        public string CountryName { get; set; } = string.Empty;
 
         // Navigation Properties
         [ForeignKey("CountryID")]

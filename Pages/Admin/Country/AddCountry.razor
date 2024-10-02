@@ -1,7 +1,7 @@
 @page "/admin/addcountry"
 @using MovieWebsite.Models
 @layout AdminLayout
-@inject ICountryReference CountryReference
+@inject ICountryRepository CountryRepository
 @inject NavigationManager NavigationManager
 
 <h3>Thêm Quốc Gia Mới</h3>
@@ -24,7 +24,7 @@
 
     private async Task HandleValidSubmit()
     {
-        await CountryReference.AddCountryAsync(newCountry);
+        await CountryRepository.AddCountryAsync(newCountry);
         // Điều hướng về trang quản lý thể loại sau khi thêm thành công
         NavigationManager.NavigateTo("/admin/countries");
     }

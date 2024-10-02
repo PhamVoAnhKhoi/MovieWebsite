@@ -1,71 +1,67 @@
-@* @page "/admin/editmovie/{MovieId:long}"
-@layout AdminLayout
+@page "/admin/editmovie/{id:long}"
 @using MovieWebsite.Models
-@inject IMovieReference MovieReference
-@inject ICategoryReference CategoryReference
+@layout AdminLayout
+@inject IMovieRepository MovieRepository
 @inject NavigationManager NavigationManager
 
-<h3>Chỉnh Sửa Phim</h3>
+<h3>Chỉnh sửa thông tin Phim</h3>
 
-@if (movie == null || categories == null)
+@if (movie == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <EditForm Model="@movie" OnValidSubmit="HandleValidSubmit">
+    <EditForm Model="movie" OnValidSubmit="HandleValidSubmit">
         <DataAnnotationsValidator />
         <ValidationSummary />
 
         <div class="form-group">
-            <label for="Title">Tên Phim</label>
+            <label for="Title">Tên phim</label>
             <InputText id="Title" class="form-control" @bind-Value="movie.Title" />
         </div>
 
         <div class="form-group">
-            <label for="Director">Đạo Diễn</label>
-
+            <label for="PosterURL">URL Poster</label>
+            <InputText id="PosterURL" class="form-control" @bind-Value="movie.PosterURL" />
         </div>
+
+        @* <div class="form-group">
+            <label for="Country">Quốc Gia</label>
+            <InputText id="Country" class="form-control" @bind-Value="movie.Country" />
+        </div> *@
 
         <div class="form-group">
-            <label for="ReleaseDate">Ngày Phát Hành</label>
-            <InputDate id="ReleaseDate" class="form-control" @bind-Value="movie.ReleaseYear" />
+            <label for="ReleaseDate">Ngày phát hành</label>
+            <InputDate id="ReleaseDate" class="form-control" @bind-Value="movie.ReleaseDate" />
         </div>
 
-        <div class="form-group">
-            <label for="MovieImage">Link Hình Ảnh</label>
-            <InputText id="MovieImage" class="form-control" @bind-Value="movie.MovieImage" />
-        </div>
+        <!-- Các trường khác của Movie -->
 
-        <div class="form-group">
-            <label for="Categories">Thể Loại</label>
-            <InputSelect id="Categories" class="form-control" multiple @bind-Value="selectedCategoryIds">
-                @foreach (var category in categories)
-                {
-                    <option value="@category.CategoryId">@category.Name</option>
-                }
-            </InputSelect>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Lưu</button>
+        <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+        <button type="button" class="btn btn-secondary" @onclick="Cancel">Hủy</button>
     </EditForm>
 }
 
 @code {
     [Parameter]
-    public long MovieId { get; set; }
+    public long id { get; set; }
 
     private Movie movie;
-    private List<Category> categories;
-    private List<long> selectedCategoryIds = new List<long>();
 
     protected override async Task OnInitializedAsync()
     {
-        movie = await MovieReference.GetMovieByIdAsync(MovieId);
-        categories = (await CategoryReference.GetAllCategoriesAsync()).ToList();
-
-        //selectedCategoryIds = movie.MovieCategories.Select(mc => mc.CategoryId).ToList(); // Lấy danh sách thể loại hiện có của phim
+        movie = await MovieRepository.GetMovieByIdAsync(id);
     }
 
-   
-} *@
+    private async Task HandleValidSubmit()
+    {
+        await MovieRepository.UpdateMovieAsync(movie);
+        NavigationManager.NavigateTo("/admin/movies");
+    }
+
+    private void Cancel()
+    {
+        NavigationManager.NavigateTo("/admin/movies");
+    }
+}

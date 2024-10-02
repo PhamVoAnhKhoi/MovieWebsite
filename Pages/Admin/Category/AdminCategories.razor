@@ -1,7 +1,7 @@
 @page "/admin/categories"
 @using MovieWebsite.Models
 @layout AdminLayout
-@inject ICategoryReference CategoryReference
+@inject ICategoryRepository CategoryRepository
 
 <h3>Quản lý Danh Mục</h3>
 
@@ -48,7 +48,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        categories = await CategoryReference.GetAllCategoriesAsync();
+        categories = await CategoryRepository.GetAllCategoriesAsync();
     }
 
     private async Task HandleDeleteCategory(long categoryId)
@@ -56,8 +56,8 @@ else
         bool confirm = await JSRuntime.InvokeAsync<bool>("confirm", $"Bạn có chắc chắn muốn xóa danh mục này không?");
         if (confirm)
         {
-            await CategoryReference.DeleteCategoryAsync(categoryId);
-            categories = await CategoryReference.GetAllCategoriesAsync(); // Refresh list
+            await CategoryRepository.DeleteCategoryAsync(categoryId);
+            categories = await CategoryRepository.GetAllCategoriesAsync(); // Refresh list
         }
     }
 

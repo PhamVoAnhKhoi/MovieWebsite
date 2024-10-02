@@ -3,7 +3,8 @@ using System.Threading.Tasks;
 
 namespace MovieWebsite.Models
 {
-    public interface IGenreReference
+    public interface IGenreRepository
+    
     {
         Task<IEnumerable<Genre>> GetAllGenresAsync();
         Task<Genre> GetGenreByIdAsync(long id);
