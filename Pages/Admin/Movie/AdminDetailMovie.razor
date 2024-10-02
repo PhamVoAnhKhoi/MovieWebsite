@@ -1,0 +1,59 @@
+@page "/admin/detailmovie/{id:long}"
+@using MovieWebsite.Models
+@inject IMovieRepository MovieRepository
+@inject NavigationManager NavigationManager
+
+@code {
+    private Movie movie;
+
+    [Parameter]
+    public long Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Lấy thông tin bộ phim từ repository theo Id
+        movie = await MovieRepository.GetMovieByIdAsync(Id);
+    }
+}
+
+<div class="container mt-5">
+    @if (movie != null)
+    {
+        <h2>@movie.Title</h2>
+        <div class="card mb-4">
+            <img src="@movie.PosterURL" class="card-img-top" alt="@movie.Title" />
+            <div class="card-body">
+                <h5 class="card-title">Thông tin chi tiết</h5>
+                <p class="card-text"><strong>Mô tả:</strong> @movie.Description</p>
+                <p class="card-text"><strong>Thời gian:</strong> @movie.Duration phút</p>
+                <p class="card-text"><strong>Ngày phát hành:</strong> @movie.ReleaseDate.ToShortDateString()</p>
+                <p class="card-text"><strong>Đạo diễn:</strong> @movie.Director</p>
+                <p class="card-text"><strong>Diễn viên:</strong> @movie.Cast</p>
+                <p class="card-text"><strong>Quốc gia:</strong> @movie.Country.CountryName</p>
+
+                <h6>Danh mục:</h6>
+                <ul>
+                    @foreach (var category in movie.MovieCategories)
+                    {
+                        <li>@category.Category.CategoryName</li>
+                    }
+                </ul>
+
+                <h6>Thể loại:</h6>
+                <ul>
+                    @foreach (var genre in movie.MovieGenres)
+                    {
+                        <li>@genre.Genre.GenreName</li>
+                    }
+                </ul>
+
+                <a href="@movie.VideoURL" class="btn btn-primary" target="_blank">Xem Video</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Quay lại</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p>Không tìm thấy thông tin bộ phim.</p>
+    }
+</div>

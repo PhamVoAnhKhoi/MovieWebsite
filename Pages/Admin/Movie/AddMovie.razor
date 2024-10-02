@@ -7,95 +7,102 @@
 @inject ICountryRepository CountryRepository
 @inject NavigationManager NavigationManager
 
-<h3>Thêm Phim Mới</h3>
+<h3 class="text-center my-4">Thêm Phim Mới</h3>
 
 <EditForm Model="@newMovie" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
-
-    <div>
-        <label for="title">Tiêu đề</label>
-        <InputText id="title" @bind-Value="newMovie.Title" />
-        <ValidationMessage For="@(() => newMovie.Title)" />
-    </div>
-
-    <div>
-        <label for="description">Mô tả</label>
-        <InputTextArea id="description" @bind-Value="newMovie.Description" />
-    </div>
-
-    <div>
-        <label for="duration">Thời gian (phút)</label>
-        <InputNumber id="duration" @bind-Value="newMovie.Duration" />
-        <ValidationMessage For="@(() => newMovie.Duration)" />
-    </div>
-
-    <div>
-        <label for="releaseDate">Ngày phát hành</label>
-        <InputDate id="releaseDate" @bind-Value="newMovie.ReleaseDate" />
-        <ValidationMessage For="@(() => newMovie.ReleaseDate)" />
-    </div>
-
-    <div>
-        <label for="director">Đạo diễn</label>
-        <InputText id="director" @bind-Value="newMovie.Director" />
-        <ValidationMessage For="@(() => newMovie.Director)" />
-    </div>
-
-    <div>
-        <label for="cast">Diễn viên</label>
-        <InputText id="cast" @bind-Value="newMovie.Cast" />
-    </div>
-
-    <div>
-        <label for="posterURL">URL Áo</label>
-        <InputText id="posterURL" @bind-Value="newMovie.PosterURL" />
-    </div>
-
-    <div>
-        <label for="videoURL">URL Video</label>
-        <InputText id="videoURL" @bind-Value="newMovie.VideoURL" />
-    </div>
-
-    <div>
-        <label for="country">Quốc gia</label>
-        <InputSelect id="country" @bind-Value="newMovie.CountryID">
-            <option value="">-- Chọn quốc gia --</option>
-            @foreach (var country in countries)
-            {
-                <option value="@country.CountryID">@country.CountryName</option>
-            }
-        </InputSelect>
-        <ValidationMessage For="@(() => newMovie.CountryID)" />
-    </div>
-
-    <div>
-        <label>Danh mục</label>
-        @foreach (var category in categories)
-        {
-            <div>
-                <input type="checkbox" @onchange="e => ToggleCategorySelection(category.CategoryID, ((ChangeEventArgs)e).Value)" />
-                <label for="@category.CategoryID">@category.CategoryName</label>
+    
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="title" class="form-label">Tên phim</label>
+                <InputText id="title" class="form-control" @bind-Value="newMovie.Title" />
+                <ValidationMessage For="@(() => newMovie.Title)" class="text-danger" />
             </div>
-        }
-    </div>
 
-    <div>
-        <label>Thể loại</label>
-        @foreach (var genre in genres)
-        {
-            <div>
-                <input type="checkbox" @onchange="e => ToggleGenreSelection(genre.GenreID, ((ChangeEventArgs)e).Value)" />
-                <label for="@genre.GenreID">@genre.GenreName</label>
+            <div class="col-md-6">
+                <label for="country" class="form-label">Quốc gia</label>
+                <InputSelect id="country" class="form-select" @bind-Value="newMovie.CountryID">
+                    <option value="">-- Chọn quốc gia --</option>
+                    @foreach (var country in countries)
+                    {
+                        <option value="@country.CountryID">@country.CountryName</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(() => newMovie.CountryID)" class="text-danger" />
             </div>
-        }
-    </div>
 
-    <button type="submit">Thêm Phim</button>
+            <div class="col-md-12">
+                <label for="description" class="form-label">Mô tả</label>
+                <InputTextArea id="description" class="form-control" @bind-Value="newMovie.Description" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="duration" class="form-label">Thời gian (phút)</label>
+                <InputNumber id="duration" class="form-control" @bind-Value="newMovie.Duration" />
+                <ValidationMessage For="@(() => newMovie.Duration)" class="text-danger" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="releaseDate" class="form-label">Ngày phát hành</label>
+                <InputDate id="releaseDate" class="form-control" @bind-Value="newMovie.ReleaseDate" />
+                <ValidationMessage For="@(() => newMovie.ReleaseDate)" class="text-danger" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="director" class="form-label">Đạo diễn</label>
+                <InputText id="director" class="form-control" @bind-Value="newMovie.Director" />
+                <ValidationMessage For="@(() => newMovie.Director)" class="text-danger" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="cast" class="form-label">Diễn viên</label>
+                <InputText id="cast" class="form-control" @bind-Value="newMovie.Cast" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="posterURL" class="form-label">URL Poster</label>
+                <InputText id="posterURL" class="form-control" @bind-Value="newMovie.PosterURL" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="videoURL" class="form-label">URL Video</label>
+                <InputText id="videoURL" class="form-control" @bind-Value="newMovie.VideoURL" />
+            </div>
+
+            <div class="col-md-12">
+                <label class="form-label">Danh mục</label>
+                @foreach (var category in categories)
+                {
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" @onchange="e => ToggleCategorySelection(category.CategoryID, ((ChangeEventArgs)e).Value)" />
+                        <label class="form-check-label" for="@category.CategoryID">@category.CategoryName</label>
+                    </div>
+                }
+            </div>
+
+            <div class="col-md-12">
+                <label class="form-label">Thể loại</label>
+                @foreach (var genre in genres)
+                {
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" @onchange="e => ToggleGenreSelection(genre.GenreID, ((ChangeEventArgs)e).Value)" />
+                        <label class="form-check-label" for="@genre.GenreID">@genre.GenreName</label>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+            <button type="submit" class="btn btn-primary w-25">Thêm Phim</button>
+        </div>
 </EditForm>
 
 @code {
-    private AddMovieViewModel newMovie = new AddMovieViewModel();
+    private Movie newMovie = new Movie();
+    private List<long> selectedGenreIDs = new List<long>();
+    private List<long> selectedCategoryIDs = new List<long>();
     private List<Genre> genres = new List<Genre>();
     private List<Category> categories = new List<Category>();
     private List<Country> countries = new List<Country>();
@@ -111,27 +118,14 @@
     {
         try
         {
-            var movie = new Movie
-            {
-                Title = newMovie.Title,
-                Description = newMovie.Description,
-                Duration = newMovie.Duration,
-                ReleaseDate = newMovie.ReleaseDate,
-                Director = newMovie.Director,
-                Cast = newMovie.Cast,
-                PosterURL = newMovie.PosterURL,
-                VideoURL = newMovie.VideoURL,
-                CountryID = newMovie.CountryID,
-                MovieGenres = newMovie.SelectedGenreIDs.Select(g => new MovieGenre { GenreID = g }).ToList(),
-                MovieCategories = newMovie.SelectedCategoryIDs.Select(c => new MovieCategory { CategoryID = c }).ToList()
-            };
+            newMovie.MovieGenres = selectedGenreIDs.Select(g => new MovieGenre { GenreID = g }).ToList();
+            newMovie.MovieCategories = selectedCategoryIDs.Select(c => new MovieCategory { CategoryID = c }).ToList();
 
-            await MovieRepository.AddMovieAsync(movie);
+            await MovieRepository.AddMovieAsync(newMovie);
             NavigationManager.NavigateTo("/admin/movies");
         }
         catch (Exception ex)
         {
-            // Xử lý lỗi (hiển thị hoặc log)
             Console.WriteLine($"Lỗi khi thêm phim: {ex.Message}");
         }
     }
@@ -142,16 +136,16 @@
 
         if (isChecked)
         {
-            if (!newMovie.SelectedGenreIDs.Contains(genreId))
+            if (!selectedGenreIDs.Contains(genreId))
             {
-                newMovie.SelectedGenreIDs.Add(genreId);
+                selectedGenreIDs.Add(genreId);
             }
         }
         else
         {
-            if (newMovie.SelectedGenreIDs.Contains(genreId))
+            if (selectedGenreIDs.Contains(genreId))
             {
-                newMovie.SelectedGenreIDs.Remove(genreId);
+                selectedGenreIDs.Remove(genreId);
             }
         }
     }
@@ -162,16 +156,16 @@
 
         if (isChecked)
         {
-            if (!newMovie.SelectedCategoryIDs.Contains(categoryId))
+            if (!selectedCategoryIDs.Contains(categoryId))
             {
-                newMovie.SelectedCategoryIDs.Add(categoryId);
+                selectedCategoryIDs.Add(categoryId);
             }
         }
         else
         {
-            if (newMovie.SelectedCategoryIDs.Contains(categoryId))
+            if (selectedCategoryIDs.Contains(categoryId))
             {
-                newMovie.SelectedCategoryIDs.Remove(categoryId);
+                selectedCategoryIDs.Remove(categoryId);
             }
         }
     }

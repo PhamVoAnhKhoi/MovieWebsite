@@ -2,66 +2,178 @@
 @using MovieWebsite.Models
 @layout AdminLayout
 @inject IMovieRepository MovieRepository
+@inject IGenreRepository GenreRepository
+@inject ICategoryRepository CategoryRepository
+@inject ICountryRepository CountryRepository
 @inject NavigationManager NavigationManager
 
-<h3>Chỉnh sửa thông tin Phim</h3>
+<h3 class="text-center my-4">Chỉnh Sửa Phim</h3>
 
-@if (movie == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <EditForm Model="movie" OnValidSubmit="HandleValidSubmit">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
+<EditForm Model="@editMovie" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class ="container">
+        <div class = "row g-3">
+            <div class="col-md-6">
+                <label for="title" class="form-label">Tên phim</label>
+                <InputText id="title" class="form-control" @bind-Value="editMovie.Title" />
+                <ValidationMessage For="@(() => editMovie.Title)" class="text-danger" />
+            </div>
 
-        <div class="form-group">
-            <label for="Title">Tên phim</label>
-            <InputText id="Title" class="form-control" @bind-Value="movie.Title" />
+            <div class="col-md-6">
+                <label for="country" class="form-label">Quốc gia</label>
+                <InputSelect id="country" class="form-select" @bind-Value="editMovie.CountryID">
+                    <option value="">-- Chọn quốc gia --</option>
+                    @foreach (var country in countries)
+                    {
+                        <option value="@country.CountryID">@country.CountryName</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(() => editMovie.CountryID)" class="text-danger" />
+            </div>
+
+            <div class="col-md-12">
+                <label for="description" class="form-label">Mô tả</label>
+                <InputTextArea id="description" class="form-control" @bind-Value="editMovie.Description" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="duration" class="form-label">Thời gian (phút)</label>
+                <InputNumber id="duration" class="form-control" @bind-Value="editMovie.Duration" />
+                <ValidationMessage For="@(() => editMovie.Duration)" class="text-danger" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="releaseDate" class="form-label">Ngày phát hành</label>
+                <InputDate id="releaseDate" class="form-control" @bind-Value="editMovie.ReleaseDate" />
+                <ValidationMessage For="@(() => editMovie.ReleaseDate)" class="text-danger" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="director" class="form-label">Đạo diễn</label>
+                <InputText id="director" class="form-control" @bind-Value="editMovie.Director" />
+                <ValidationMessage For="@(() => editMovie.Director)" class="text-danger" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="cast" class="form-label">Diễn viên</label>
+                <InputText id="cast" class="form-control" @bind-Value="editMovie.Cast" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="posterURL" class="form-label">URL Poster</label>
+                <InputText id="posterURL" class="form-control" @bind-Value="editMovie.PosterURL" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="videoURL" class="form-label">URL Video</label>
+                <InputText id="videoURL" class="form-control" @bind-Value="editMovie.VideoURL" />
+            </div>
+
+            <div class="col-md-12">
+                <label>Danh mục</label>
+                @foreach (var category in categories)
+                {
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" @onchange="e => ToggleCategorySelection(category.CategoryID, ((ChangeEventArgs)e).Value)" 
+                            checked="@editMovie.MovieCategories.Any(c => c.CategoryID == category.CategoryID)" />
+                        <label class="form-check-label" for="@category.CategoryID">@category.CategoryName</label>
+                    </div>
+                }
+            </div>
+
+            <div class="col-md-12">
+                <label>Thể loại</label>
+                @foreach (var genre in genres)
+                {
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" @onchange="e => ToggleGenreSelection(genre.GenreID, ((ChangeEventArgs)e).Value)" 
+                            checked="@editMovie.MovieGenres.Any(g => g.GenreID == genre.GenreID)" />
+                        <label class="form-check-label" for="@genre.GenreID">@genre.GenreName</label>
+                    </div>
+                }
+            </div>         
         </div>
-
-        <div class="form-group">
-            <label for="PosterURL">URL Poster</label>
-            <InputText id="PosterURL" class="form-control" @bind-Value="movie.PosterURL" />
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary w-25">Cập Nhật Phim</button>
         </div>
-
-        @* <div class="form-group">
-            <label for="Country">Quốc Gia</label>
-            <InputText id="Country" class="form-control" @bind-Value="movie.Country" />
-        </div> *@
-
-        <div class="form-group">
-            <label for="ReleaseDate">Ngày phát hành</label>
-            <InputDate id="ReleaseDate" class="form-control" @bind-Value="movie.ReleaseDate" />
-        </div>
-
-        <!-- Các trường khác của Movie -->
-
-        <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
-        <button type="button" class="btn btn-secondary" @onclick="Cancel">Hủy</button>
-    </EditForm>
-}
+    </div>   
+</EditForm>
 
 @code {
-    [Parameter]
-    public long id { get; set; }
-
-    private Movie movie;
+    private Movie editMovie = new Movie();
+    private List<Genre> genres = new List<Genre>();
+    private List<Category> categories = new List<Category>();
+    private List<Country> countries = new List<Country>();
+    [Parameter] public long Id { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        movie = await MovieRepository.GetMovieByIdAsync(id);
+        // Lấy dữ liệu phim từ repository theo Id
+        editMovie = await MovieRepository.GetMovieByIdAsync(Id);
+
+        // Lấy các danh sách quốc gia, thể loại, danh mục
+        genres = (await GenreRepository.GetAllGenresAsync()).ToList();
+        categories = (await CategoryRepository.GetAllCategoriesAsync()).ToList();
+        countries = (await CountryRepository.GetAllCountriesAsync()).ToList();
     }
 
     private async Task HandleValidSubmit()
     {
-        await MovieRepository.UpdateMovieAsync(movie);
-        NavigationManager.NavigateTo("/admin/movies");
+        try
+        {
+            // Cập nhật các danh mục và thể loại
+            editMovie.MovieGenres = editMovie.MovieGenres.ToList();
+            editMovie.MovieCategories = editMovie.MovieCategories.ToList();
+
+            await MovieRepository.UpdateMovieAsync(editMovie);
+            NavigationManager.NavigateTo("/admin/movies");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Lỗi khi cập nhật phim: {ex.Message}");
+        }
     }
 
-    private void Cancel()
+    private void ToggleGenreSelection(long genreId, object checkedValue)
     {
-        NavigationManager.NavigateTo("/admin/movies");
+        var isChecked = (bool)checkedValue;
+
+        if (isChecked)
+        {
+            if (!editMovie.MovieGenres.Any(g => g.GenreID == genreId))
+            {
+                editMovie.MovieGenres.Add(new MovieGenre { GenreID = genreId });
+            }
+        }
+        else
+        {
+            var genre = editMovie.MovieGenres.FirstOrDefault(g => g.GenreID == genreId);
+            if (genre != null)
+            {
+                editMovie.MovieGenres.Remove(genre);
+            }
+        }
+    }
+
+    private void ToggleCategorySelection(long categoryId, object checkedValue)
+    {
+        var isChecked = (bool)checkedValue;
+
+        if (isChecked)
+        {
+            if (!editMovie.MovieCategories.Any(c => c.CategoryID == categoryId))
+            {
+                editMovie.MovieCategories.Add(new MovieCategory { CategoryID = categoryId });
+            }
+        }
+        else
+        {
+            var category = editMovie.MovieCategories.FirstOrDefault(c => c.CategoryID == categoryId);
+            if (category != null)
+            {
+                editMovie.MovieCategories.Remove(category);
+            }
+        }
     }
 }
