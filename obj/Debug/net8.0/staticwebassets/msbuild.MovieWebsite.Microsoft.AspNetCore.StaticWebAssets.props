@@ -224,5 +224,21 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\MovieWebsite.bundle.scp.css))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\posters\c3e42b37-5223-4289-868c-dd6e33d41827_z5665405473221_db6d4bf3d5d8d7198fd922518e39eb7b-3.5x3.5.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>MovieWebsite</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/MovieWebsite</BasePath>
+      <RelativePath>posters/c3e42b37-5223-4289-868c-dd6e33d41827_z5665405473221_db6d4bf3d5d8d7198fd922518e39eb7b-3.5x3.5.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\posters\c3e42b37-5223-4289-868c-dd6e33d41827_z5665405473221_db6d4bf3d5d8d7198fd922518e39eb7b-3.5x3.5.png))</OriginalItemSpec>
+    </StaticWebAsset>
   </ItemGroup>
 </Project>

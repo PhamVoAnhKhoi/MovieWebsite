@@ -49,7 +49,10 @@ namespace MovieWebsite.Models
                     .ThenInclude(mg => mg.Genre)
                 .Include(m => m.MovieCategories)
                     .ThenInclude(mc => mc.Category)
-                .Where(m => m.Title.Contains(searchTerm) || m.Director.Contains(searchTerm))
+                .Where(m => m.Title.Contains(searchTerm) || 
+                    m.Director.Contains(searchTerm) || 
+                    m.MovieGenres.Any(mg => mg.Genre.GenreName.Contains(searchTerm)) ||
+                    m.MovieCategories.Any(mc => mc.Category.CategoryName.Contains(searchTerm)))
                 .ToListAsync();
         }
 

@@ -1,9 +1,6 @@
-@* @page "/watchmovie/{Id:long}"
+@page "/watchmovie/{MovieID:long}"
 @using MovieWebsite.Models
-@inject IMovieReference MovieReference
-@inject NavigationManager NavigationManager
-
-<h3>Xem Phim</h3>
+@inject IMovieRepository MovieRepository
 
 @if (movie == null)
 {
@@ -12,14 +9,12 @@
 else
 {
     <div class="container">
-        <h5 class="card-title">@movie.Title</h5>
-
-        @if (movie.MovieUrl.Contains("youtube.com") || movie.MovieUrl.Contains("youtu.be"))
+        @if (movie.VideoURL.Contains("youtube.com") || movie.VideoURL.Contains("youtu.be"))
         {
             <!-- Nhúng video từ YouTube -->
             <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" width="100%" height="500px"
-                        src="@ConvertToYoutubeEmbedUrl(movie.MovieUrl)" 
+                        src="@ConvertToYoutubeEmbedUrl(movie.VideoURL)" 
                         frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
                 </iframe>
@@ -29,7 +24,7 @@ else
         {
             <!-- Phát video từ file mp4 -->
             <video width="100%" controls>
-                <source src="@movie.MovieUrl" type="video/mp4">
+                <source src="@movie.VideoURL" type="video/mp4">
                 Trình duyệt của bạn không hỗ trợ thẻ video.
             </video>
         }
@@ -38,16 +33,14 @@ else
 
 @code {
     [Parameter]
-    public long? Id { get; set; }
+    public long MovieID { get; set; }
 
     private Movie movie;
 
     protected override async Task OnInitializedAsync()
     {
-        if (Id.HasValue)
-        {
-            movie = await MovieReference.GetMovieByIdAsync(Id.Value);
-        }
+        // Không cần kiểm tra HasValue vì MovieID luôn có giá trị
+        movie = await MovieRepository.GetMovieByIdAsync(MovieID);
     }
 
     private string ConvertToYoutubeEmbedUrl(string url)
@@ -62,4 +55,4 @@ else
         }
         return url;
     }
-} *@
+}

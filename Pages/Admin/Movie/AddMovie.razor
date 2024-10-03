@@ -63,8 +63,13 @@
 
             <div class="col-md-6">
                 <label for="posterURL" class="form-label">URL Poster</label>
-                <InputText id="posterURL" class="form-control" @bind-Value="newMovie.PosterURL" />
+                <InputFile id="posterURL" class="form-control" OnChange="HandlePosterUpload" />
             </div>
+
+            @* <div class="col-md-6">
+                <label for="videoURL" class="form-label">URL Video</label>
+                <InputFile id="videoURL" class="form-control" OnChange="HandleVideoUpload" />
+            </div> *@
 
             <div class="col-md-6">
                 <label for="videoURL" class="form-label">URL Video</label>
@@ -78,6 +83,7 @@
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" @onchange="e => ToggleCategorySelection(category.CategoryID, ((ChangeEventArgs)e).Value)" />
                         <label class="form-check-label" for="@category.CategoryID">@category.CategoryName</label>
+                        <ValidationMessage For="@(() => newMovie.VideoURL)" class="text-danger" />
                     </div>
                 }
             </div>
@@ -94,9 +100,11 @@
             </div>
         </div>
     </div>
+    
     <div class="text-center">
-            <button type="submit" class="btn btn-primary w-25">Thêm Phim</button>
-        </div>
+        <button type="submit" class="btn btn-primary w-25">Thêm Phim</button>          
+        <a href="javascript:history.back()" class="btn btn-secondary w-25">Quay lại</a>
+    </div>
 </EditForm>
 
 @code {
@@ -106,6 +114,8 @@
     private List<Genre> genres = new List<Genre>();
     private List<Category> categories = new List<Category>();
     private List<Country> countries = new List<Country>();
+    private IBrowserFile uploadedVideo;
+    private IBrowserFile uploadedPoster;
 
     protected override async Task OnInitializedAsync()
     {
@@ -118,6 +128,19 @@
     {
         try
         {
+            @* if (uploadedVideo != null)
+            {
+                // Lưu video lên server
+                var videoUrl = await SaveVideoToFile(uploadedVideo);
+                newMovie.VideoURL = videoUrl; // Gán URL video
+            } *@
+            if (uploadedPoster != null)
+            {
+                // Lưu poster lên server
+                var posterURL = await SavePosterToFile(uploadedPoster);
+                newMovie.PosterURL = posterURL; // Gán URL poster
+            }
+
             newMovie.MovieGenres = selectedGenreIDs.Select(g => new MovieGenre { GenreID = g }).ToList();
             newMovie.MovieCategories = selectedCategoryIDs.Select(c => new MovieCategory { CategoryID = c }).ToList();
 
@@ -128,6 +151,58 @@
         {
             Console.WriteLine($"Lỗi khi thêm phim: {ex.Message}");
         }
+    }
+
+    @* private async Task HandleVideoUpload(InputFileChangeEventArgs e)
+    {
+        uploadedVideo = e.File; // Lưu video đã upload
+    } *@
+
+    private async Task HandlePosterUpload(InputFileChangeEventArgs e)
+    {
+        uploadedPoster = e.File; // Lưu poster đã upload
+    }
+
+    @* private async Task<string> SaveVideoToFile(IBrowserFile videoFile)
+    {
+        var fileName = $"{Guid.NewGuid()}_{videoFile.Name}";
+        var directoryPath = Path.Combine("wwwroot/videos");
+        
+        // Kiểm tra nếu thư mục tồn tại, nếu không thì tạo
+        if (!Directory.Exists(directoryPath))
+        {
+            Directory.CreateDirectory(directoryPath);
+        }
+
+        var filePath = Path.Combine(directoryPath, fileName); // Đường dẫn nơi bạn lưu video
+        
+        using (var stream = new FileStream(filePath, FileMode.Create))
+        {
+            await videoFile.OpenReadStream().CopyToAsync(stream); // Lưu video vào file
+        }
+
+        return $"/videos/{fileName}"; // Trả về URL video
+    } *@
+
+    private async Task<string> SavePosterToFile(IBrowserFile posterFile)
+    {
+        var fileName = $"{Guid.NewGuid()}_{posterFile.Name}";
+        var directoryPath = Path.Combine("wwwroot/posters");
+        
+        // Kiểm tra nếu thư mục tồn tại, nếu không thì tạo
+        if (!Directory.Exists(directoryPath))
+        {
+            Directory.CreateDirectory(directoryPath);
+        }
+
+        var filePath = Path.Combine(directoryPath, fileName); // Đường dẫn nơi bạn lưu poster
+        
+        using (var stream = new FileStream(filePath, FileMode.Create))
+        {
+            await posterFile.OpenReadStream().CopyToAsync(stream); // Lưu poster vào file
+        }
+
+        return $"/posters/{fileName}"; // Trả về URL poster
     }
 
     private void ToggleGenreSelection(long genreId, object checkedValue)
