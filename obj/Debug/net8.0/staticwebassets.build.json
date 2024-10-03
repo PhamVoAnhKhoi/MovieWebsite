@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3MeGK0fW0aACmzVAJAkakWmBK/RlKwrLqx5sE5Bhic8=",
+  "Hash": "nifxMfcPkI3AWu96rMauefYoSzxPZeU3yYI60uoSD+0=",
   "Source": "MovieWebsite",
   "BasePath": "_content/MovieWebsite",
   "Mode": "Default",
@@ -300,6 +300,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\posters\\c3e42b37-5223-4289-868c-dd6e33d41827_z5665405473221_db6d4bf3d5d8d7198fd922518e39eb7b-3.5x3.5.png",
+      "SourceId": "MovieWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\",
+      "BasePath": "_content/MovieWebsite",
+      "RelativePath": "posters/c3e42b37-5223-4289-868c-dd6e33d41827_z5665405473221_db6d4bf3d5d8d7198fd922518e39eb7b-3.5x3.5.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\posters\\c3e42b37-5223-4289-868c-dd6e33d41827_z5665405473221_db6d4bf3d5d8d7198fd922518e39eb7b-3.5x3.5.png"
     }
   ]
 }

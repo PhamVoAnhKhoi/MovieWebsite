@@ -57,6 +57,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\posters\\c3e42b37-5223-4289-868c-dd6e33d41827_z5665405473221_db6d4bf3d5d8d7198fd922518e39eb7b-3.5x3.5.png",
+      "PackagePath": "staticwebassets\\posters\\c3e42b37-5223-4289-868c-dd6e33d41827_z5665405473221_db6d4bf3d5d8d7198fd922518e39eb7b-3.5x3.5.png"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.MovieWebsite.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
