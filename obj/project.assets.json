@@ -4074,11 +4074,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\MovieWebsite.csproj",
+      "projectUniqueName": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\MovieWebsite.csproj",
       "projectName": "MovieWebsite",
-      "projectPath": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\MovieWebsite.csproj",
+      "projectPath": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\MovieWebsite.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\obj\\",
+      "outputPath": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
