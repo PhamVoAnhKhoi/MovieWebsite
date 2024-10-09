@@ -1,8 +1,9 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace MovieWebsite.Models
 {
-    public class MovieDbContext : DbContext
+    public class MovieDbContext : IdentityDbContext<User>
     {
         public MovieDbContext(DbContextOptions<MovieDbContext> options)
             : base(options)
@@ -55,13 +56,6 @@ namespace MovieWebsite.Models
                 .WithMany(c => c.MovieCategories)
                 .HasForeignKey(mc => mc.CategoryID)
                 .OnDelete(DeleteBehavior.Cascade);
-
-            // Cấu hình bảng User và Role
-            modelBuilder.Entity<User>()
-                .HasOne(u => u.Role)
-                .WithMany(r => r.Users)
-                .HasForeignKey(u => u.RoleID)
-                .OnDelete(DeleteBehavior.Restrict);
 
             // Cấu hình các mối quan hệ khác
             modelBuilder.Entity<Review>()

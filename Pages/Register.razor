@@ -1,0 +1,60 @@
+@page "/register"
+@using Microsoft.AspNetCore.Identity
+@using MovieWebsite.Models
+@inject UserManager<User> UserManager
+@inject RoleManager<Role> RoleManager // Thêm kiểu cho RoleManager
+@inject NavigationManager Navigation
+
+<h3>Đăng Ký</h3>
+
+<EditForm Model="@user" OnValidSubmit="@RegisterUser">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>Email:</label>
+        <InputText @bind-Value="@user.Email" />
+    </div>
+    <div>
+        <label>Mật khẩu:</label>
+        <InputText @bind-Value="@password" type="password" /> <!-- Sử dụng biến password để lưu mật khẩu -->
+    </div>
+    <button type="submit">Đăng ký</button>
+</EditForm>
+
+@code {
+    private User user = new User();
+    private string password; // Biến riêng để lưu mật khẩu
+
+    private async Task RegisterUser()
+    {
+        user.UserName = user.Email; // Thiết lập tên người dùng bằng email
+        var result = await UserManager.CreateAsync(user, password); // Sử dụng biến password
+
+        if (result.Succeeded)
+        {
+            if(user.Email == "anhkhoiphamvo2909@gmail.com")
+            {
+                await RoleManager.CreateAsync(new Role { Name = "Admin" });
+                await UserManager.AddToRoleAsync(user, "Admin");
+                Navigation.NavigateTo("/admin");
+            }
+            else
+            {
+                // Tạo vai trò Customer
+                var roleExists = await RoleManager.RoleExistsAsync("Customer");
+                if (!roleExists)
+                {
+                    await RoleManager.CreateAsync(new Role { Name = "Customer" });
+                }
+
+                await UserManager.AddToRoleAsync(user, "Customer");
+                Navigation.NavigateTo("/home"); // Chuyển hướng đến trang Home
+            }           
+        }
+        else
+        {
+            // Xử lý lỗi (hiển thị thông báo)
+        }
+    }
+}

@@ -86,12 +86,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/MovieDetail.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVEZXRhaWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Movies.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/SearchResult.razor]

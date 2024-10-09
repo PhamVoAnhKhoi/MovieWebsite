@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nifxMfcPkI3AWu96rMauefYoSzxPZeU3yYI60uoSD+0=",
+  "Hash": "s7K02Iq18DaPG6NEtBnqKIwqpTRcJlzrdkO41iRw26g=",
   "Source": "MovieWebsite",
   "BasePath": "_content/MovieWebsite",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "MovieWebsite\\wwwroot",
       "Source": "MovieWebsite",
-      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\",
       "BasePath": "_content/MovieWebsite",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MovieWebsite.styles.css",
+      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MovieWebsite.styles.css",
       "SourceId": "MovieWebsite",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/MovieWebsite",
       "RelativePath": "MovieWebsite.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MovieWebsite.styles.css"
+      "OriginalItemSpec": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MovieWebsite.styles.css"
     },
     {
-      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MovieWebsite.bundle.scp.css",
+      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MovieWebsite.bundle.scp.css",
       "SourceId": "MovieWebsite",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/MovieWebsite",
       "RelativePath": "MovieWebsite.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MovieWebsite.bundle.scp.css"
+      "OriginalItemSpec": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MovieWebsite.bundle.scp.css"
     },
     {
-      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "SourceId": "MovieWebsite",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\",
       "BasePath": "_content/MovieWebsite",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "MovieWebsite",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\",
       "BasePath": "_content/MovieWebsite",
       "RelativePath": "css/bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "SourceId": "MovieWebsite",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\",
       "BasePath": "_content/MovieWebsite",
       "RelativePath": "css/open-iconic/FONT-LICENSE",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
-      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "MovieWebsite",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\",
       "BasePath": "_content/MovieWebsite",
       "RelativePath": "css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "SourceId": "MovieWebsite",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\",
       "BasePath": "_content/MovieWebsite",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.eot",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "SourceId": "MovieWebsite",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\",
       "BasePath": "_content/MovieWebsite",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.otf",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "SourceId": "MovieWebsite",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\",
       "BasePath": "_content/MovieWebsite",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.svg",
       "AssetKind": "All",
@@ -188,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "SourceId": "MovieWebsite",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\",
       "BasePath": "_content/MovieWebsite",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.ttf",
       "AssetKind": "All",
@@ -207,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "SourceId": "MovieWebsite",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\",
       "BasePath": "_content/MovieWebsite",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.woff",
       "AssetKind": "All",
@@ -226,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "SourceId": "MovieWebsite",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\",
       "BasePath": "_content/MovieWebsite",
       "RelativePath": "css/open-iconic/ICON-LICENSE",
       "AssetKind": "All",
@@ -245,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\ICON-LICENSE"
     },
     {
-      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\README.md",
+      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\README.md",
       "SourceId": "MovieWebsite",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\",
       "BasePath": "_content/MovieWebsite",
       "RelativePath": "css/open-iconic/README.md",
       "AssetKind": "All",
@@ -264,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\README.md"
     },
     {
-      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\site.css",
+      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\site.css",
       "SourceId": "MovieWebsite",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\",
       "BasePath": "_content/MovieWebsite",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -283,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\favicon.ico",
+      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\favicon.ico",
       "SourceId": "MovieWebsite",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\",
       "BasePath": "_content/MovieWebsite",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -302,10 +302,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\posters\\c3e42b37-5223-4289-868c-dd6e33d41827_z5665405473221_db6d4bf3d5d8d7198fd922518e39eb7b-3.5x3.5.png",
+      "Identity": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\posters\\c3e42b37-5223-4289-868c-dd6e33d41827_z5665405473221_db6d4bf3d5d8d7198fd922518e39eb7b-3.5x3.5.png",
       "SourceId": "MovieWebsite",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\",
+      "ContentRoot": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\",
       "BasePath": "_content/MovieWebsite",
       "RelativePath": "posters/c3e42b37-5223-4289-868c-dd6e33d41827_z5665405473221_db6d4bf3d5d8d7198fd922518e39eb7b-3.5x3.5.png",
       "AssetKind": "All",
