@@ -20,7 +20,7 @@ namespace MovieWebsite.Models
         public DateTime ReviewDate { get; set; } = DateTime.UtcNow;
 
         // Foreign Keys
-        public long UserID { get; set; }
+        public string UserID { get; set; }
         public long MovieID { get; set; }
 
         // Navigation Properties

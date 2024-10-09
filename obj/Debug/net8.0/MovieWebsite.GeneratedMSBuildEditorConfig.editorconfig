@@ -9,131 +9,139 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MovieWebsite
 build_property.RootNamespace = MovieWebsite
-build_property.ProjectDir = D:\Learn\WebNC\BlazorServer\MovieWebsite\MovieWebsite\
+build_property.ProjectDir = D:\Learn\WebNC\BlazorServer\TestWeb\MovieWebsite\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Learn\WebNC\BlazorServer\MovieWebsite\MovieWebsite
+build_property.MSBuildProjectDirectory = D:\Learn\WebNC\BlazorServer\TestWeb\MovieWebsite
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/App.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Admin/Category/AddCategory.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Admin/Category/AddCategory.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ2F0ZWdvcnlcQWRkQ2F0ZWdvcnkucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Admin/Category/AdminCategories.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Admin/Category/AdminCategories.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ2F0ZWdvcnlcQWRtaW5DYXRlZ29yaWVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Admin/Category/EditCategory.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Admin/Category/EditCategory.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ2F0ZWdvcnlcRWRpdENhdGVnb3J5LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Admin/Country/AddCountry.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Admin/Country/AddCountry.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ291bnRyeVxBZGRDb3VudHJ5LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Admin/Country/AdminCountries.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Admin/Country/AdminCountries.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ291bnRyeVxBZG1pbkNvdW50cmllcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Admin/Country/EditCategory.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Admin/Country/EditCategory.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ291bnRyeVxFZGl0Q2F0ZWdvcnkucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Admin/Genre/AddGenre.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Admin/Genre/AddGenre.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cR2VucmVcQWRkR2VucmUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Admin/Genre/AdminGenres.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Admin/Genre/AdminGenres.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cR2VucmVcQWRtaW5HZW5yZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Admin/Genre/EditGenre.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Admin/Genre/EditGenre.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cR2VucmVcRWRpdEdlbnJlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Admin/Movie/AddMovie.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Admin/Movie/AddMovie.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTW92aWVcQWRkTW92aWUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Admin/Movie/AdminDetailMovie.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Admin/Movie/AdminDetailMovie.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTW92aWVcQWRtaW5EZXRhaWxNb3ZpZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Admin/Movie/AdminMovie.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Admin/Movie/AdminMovie.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTW92aWVcQWRtaW5Nb3ZpZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Admin/Movie/EditMovie.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Admin/Movie/EditMovie.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTW92aWVcRWRpdE1vdmllLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Counter.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/FetchData.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Index.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/MovieDetail.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/MovieDetail.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVEZXRhaWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Movies.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Movies.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/SearchResult.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/SearchResult.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoUmVzdWx0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/WatchMovie.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/WatchMovie.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2F0Y2hNb3ZpZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Shared/SurveyPrompt.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/_Imports.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Shared/AdminLayout.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Shared/AdminLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEFkbWluTGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-i12jp1vkim
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Shared/AdminNavMenu.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Shared/AdminNavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEFkbWluTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-0coiy6qp5q
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Shared/MainLayout.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-3pku7upj1i
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Shared/NavMenu.razor]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-k6x7gj9yhq
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/Error.cshtml]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/_Host.cshtml]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Learn/WebNC/BlazorServer/MovieWebsite/MovieWebsite/Pages/_Layout.cshtml]
+[D:/Learn/WebNC/BlazorServer/TestWeb/MovieWebsite/Pages/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

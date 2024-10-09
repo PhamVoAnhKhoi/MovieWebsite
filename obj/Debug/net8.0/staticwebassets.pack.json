@@ -1,63 +1,63 @@
 {
   "Files": [
     {
-      "Id": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MovieWebsite.bundle.scp.css",
+      "Id": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MovieWebsite.bundle.scp.css",
       "PackagePath": "staticwebassets\\MovieWebsite.bundle.scp.css"
     },
     {
-      "Id": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Id": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Id": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "Id": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "PackagePath": "staticwebassets\\css\\open-iconic"
     },
     {
-      "Id": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "Id": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "PackagePath": "staticwebassets\\css\\open-iconic"
     },
     {
-      "Id": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\README.md",
+      "Id": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\README.md",
       "PackagePath": "staticwebassets\\css\\open-iconic\\README.md"
     },
     {
-      "Id": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Id": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Id": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Id": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Id": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Id": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Id": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Id": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Id": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Id": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Id": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Id": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Id": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\css\\site.css",
+      "Id": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\favicon.ico",
+      "Id": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\Learn\\WebNC\\BlazorServer\\MovieWebsite\\MovieWebsite\\wwwroot\\posters\\c3e42b37-5223-4289-868c-dd6e33d41827_z5665405473221_db6d4bf3d5d8d7198fd922518e39eb7b-3.5x3.5.png",
+      "Id": "D:\\Learn\\WebNC\\BlazorServer\\TestWeb\\MovieWebsite\\wwwroot\\posters\\c3e42b37-5223-4289-868c-dd6e33d41827_z5665405473221_db6d4bf3d5d8d7198fd922518e39eb7b-3.5x3.5.png",
       "PackagePath": "staticwebassets\\posters\\c3e42b37-5223-4289-868c-dd6e33d41827_z5665405473221_db6d4bf3d5d8d7198fd922518e39eb7b-3.5x3.5.png"
     },
     {

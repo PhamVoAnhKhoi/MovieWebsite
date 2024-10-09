@@ -10,7 +10,7 @@ namespace MovieWebsite.Models
         public long WatchID { get; set; }
 
         [Required]
-        public long UserID { get; set; }
+        public string UserID { get; set; }
 
         [Required]
         public long MovieID { get; set; }
